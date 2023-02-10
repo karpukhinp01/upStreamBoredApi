@@ -14,9 +14,6 @@ import kotlinx.coroutines.launch
 
 class DetailViewModel(application: Application): BaseViewModel(application) {
 
-    private val _cardsArrayList = MutableLiveData<ArrayList<String>>()
-    val cardsArrayList: LiveData<ArrayList<String>> get() = _cardsArrayList
-
     private val boredService = BoredApiService()
 
     private val _actionActivity = MutableLiveData<ActionActivity>()
@@ -33,16 +30,19 @@ class DetailViewModel(application: Application): BaseViewModel(application) {
         viewModelScope.launch {
             try {
                 aARetrieved(boredService.getRandomAction())
-                Toast.makeText(getApplication(), "Activities retrieved from remote", Toast.LENGTH_SHORT).show()
             } catch (e: Throwable) {
+                _loading.value = false
+                _aALoadError.value = true
                 e.printStackTrace()
             }
         }
     }
 
+    fun refresh() {
+        fetchFromRemote()
+    }
     private fun aARetrieved(actionActivity: ActionActivity) {
         _actionActivity.value = actionActivity
-
         _loading.value = false
         _aALoadError.value = false
     }
