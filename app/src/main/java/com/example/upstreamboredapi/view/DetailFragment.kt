@@ -54,6 +54,7 @@ class DetailFragment : Fragment() {
 
             override fun onLeftCardExit(p0: Any?) {
                 mViewModel.refresh()
+                mViewModel.storeAALocally(actionActivities[0])
             }
 
             override fun onRightCardExit(p0: Any?) {
