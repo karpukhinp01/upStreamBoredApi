@@ -9,17 +9,14 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.upstreamboredapi.R
 import com.example.upstreamboredapi.databinding.FragmentStartBinding
-import com.example.upstreamboredapi.model.AADatabase
-import com.example.upstreamboredapi.viewmodel.BaseViewModel
-import com.example.upstreamboredapi.viewmodel.DetailViewModel
 import com.example.upstreamboredapi.viewmodel.StartViewModel
-import kotlinx.coroutines.CoroutineScope
+import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.google.android.material.slider.RangeSlider
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
 class StartFragment : Fragment() {
-
     private lateinit var mViewModel: StartViewModel
     private var _binding: FragmentStartBinding? = null
 
@@ -40,10 +37,29 @@ class StartFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         mViewModel = ViewModelProvider(this)[StartViewModel::class.java]
+        val dialog = BottomSheetDialog(requireContext())
+
 
         binding.goButton.setOnClickListener {
             findNavController().navigate(R.id.action_startFragment_to_detailFragment)
             mViewModel.deleteAll()
+        }
+
+        binding.filterButton.setOnClickListener {
+            val mView = layoutInflater.inflate(R.layout.filter_dialog_view, null)
+            dialog.apply {
+                setCancelable(true)
+                setContentView(mView)
+                show()
+            }
+
+            val priceRange = view.findViewById<RangeSlider>(R.id.price_range)
+            priceRange.setValues(0.0F, 1.0F)
+            priceRange.addOnChangeListener { slider, value, fromUser ->
+                val values = priceRange.values
+                mViewModel.setFilters(values[0], values[1])
+            }
+
         }
 
     }

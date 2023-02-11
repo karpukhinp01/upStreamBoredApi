@@ -17,6 +17,9 @@ class StartViewModel(application: Application): BaseViewModel(application) {
     private val _actionActivity = MutableLiveData<ActionActivity>()
     val actionActivity: LiveData<ActionActivity> get() = _actionActivity
 
+    private var _filterPriceRange = "?minprice=0.0&maxprice=1.0"
+    val filterPriceRange: String get() =_filterPriceRange
+
     private val _aALoadError = MutableLiveData<Boolean>()
     val aALoadError: LiveData<Boolean> get() = _aALoadError
 
@@ -27,6 +30,10 @@ class StartViewModel(application: Application): BaseViewModel(application) {
         launch {
             AADatabase(getApplication()).aADao().deleteAll()
         }
+    }
+
+    fun setFilters(priceMin: Float, priceMax: Float) {
+        _filterPriceRange = "?minprice=$priceMin&maxprice=$priceMax"
     }
 
 

@@ -47,6 +47,8 @@ def lifecycle = "2.5.1"
 
 
 dependencies {
+
+
     // Swipe cards
     implementation 'com.lorentzos.swipecards:library:1.0.9@aar'
 
