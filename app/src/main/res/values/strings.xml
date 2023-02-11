@@ -49,4 +49,18 @@
     <string name="some_activity">some activity</string>
     <string name="favorites">Favorites</string>
     <string name="price_range">Price range</string>
+    <string name="filter_the_activities">Filter the activities</string>
+    <string name="education">Education</string>
+    <string name="recreational">Recreational</string>
+    <string name="social">Social</string>
+    <string name="diy">DIY</string>
+    <string name="charity">Charity</string>
+    <string name="cooking">Cooking</string>
+    <string name="relaxation">Relaxation</string>
+    <string name="music">Music</string>
+    <string name="busywork">Busywork</string>
+    <string name="type">Type</string>
+    <string name="apply">Apply</string>
+    <string name="cancel">cancel</string>
+    <string name="reset">reset</string>
 </resources>

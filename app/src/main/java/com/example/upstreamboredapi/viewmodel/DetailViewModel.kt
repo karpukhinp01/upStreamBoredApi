@@ -28,11 +28,20 @@ class DetailViewModel(application: Application): BaseViewModel(application) {
 
     val priceMin = SharedPreferencesHelper(getApplication()).getPriceMin().toString()
     val priceMax = SharedPreferencesHelper(getApplication()).getPriceMax().toString()
+    val type = SharedPreferencesHelper(getApplication()).getType()
+
+    fun resetFilters() {
+        SharedPreferencesHelper(getApplication()).apply {
+            savePriceMin(0.0F)
+            savePriceMax(1.0F)
+            saveType("")
+        }
+    }
 
     private fun fetchFromRemote() {
         viewModelScope.launch {
             try {
-                aARetrieved(boredService.getFilteredAction(priceMin, priceMax))
+                aARetrieved(boredService.getFilteredAction(priceMin, priceMax, type!!))
             } catch (e: Throwable) {
                 _aALoadError.value = true
                 e.printStackTrace()

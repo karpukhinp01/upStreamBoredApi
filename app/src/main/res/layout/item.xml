@@ -39,6 +39,25 @@
             app:layout_constraintBottom_toBottomOf="@id/price_str"
             android:paddingHorizontal="8dp"/>
 
+        <TextView
+            android:id="@+id/type_str"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Type:"
+            app:layout_constraintTop_toBottomOf="@id/price_str"
+            app:layout_constraintStart_toStartOf="parent"
+            android:paddingHorizontal="8dp"/>
+
+        <TextView
+            android:id="@+id/type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="N/a"
+            app:layout_constraintBottom_toBottomOf="@id/type_str"
+            android:paddingHorizontal="8dp"/>
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.cardview.widget.CardView>

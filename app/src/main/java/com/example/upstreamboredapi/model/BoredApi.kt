@@ -10,5 +10,6 @@ interface BoredApi {
 
     @GET("activity")
     suspend fun getFilteredAction(@Query("minprice", encoded = true) filter1: String,
-                                    @Query("maxprice", encoded = true) filter2: String): ActionActivity
+                                    @Query("maxprice", encoded = true) filter2: String,
+                                    @Query("type", encoded = true) type: String): ActionActivity
 }

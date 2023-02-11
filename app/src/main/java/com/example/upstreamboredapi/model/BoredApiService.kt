@@ -24,7 +24,7 @@ class BoredApiService {
     suspend fun getRandomAction(): ActionActivity {
         return api.getRandomAction()
     }
-    suspend fun getFilteredAction(priceMin: String, priceMax: String): ActionActivity {
-        return api.getFilteredAction(priceMin, priceMax)
+    suspend fun getFilteredAction(priceMin: String, priceMax: String, type: String): ActionActivity {
+        return api.getFilteredAction(priceMin, priceMax, type)
     }
 }

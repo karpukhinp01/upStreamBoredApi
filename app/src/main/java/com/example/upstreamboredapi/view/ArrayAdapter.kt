@@ -17,10 +17,12 @@ open class CardsAdapter(context: Context, resourceId: Int, actionActivities: Lis
 
         val vActionActivity = finalView.findViewById<TextView>(R.id.action_activity)
         val vPrice = finalView.findViewById<TextView>(R.id.price)
+        val vType = finalView.findViewById<TextView>(R.id.type)
 
 
         vActionActivity.text = currentAA!!.activity
         vPrice.text = currentAA.price.toString()
+        vType.text = currentAA.type
         return finalView
     }
 }
