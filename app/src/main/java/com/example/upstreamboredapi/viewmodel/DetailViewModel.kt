@@ -1,12 +1,15 @@
 package com.example.upstreamboredapi.viewmodel
 
 import android.app.Application
+import android.util.Log
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.upstreamboredapi.model.ActionActivity
 import androidx.lifecycle.viewModelScope
 import com.example.upstreamboredapi.model.AADatabase
 import com.example.upstreamboredapi.model.BoredApiService
+import com.example.upstreamboredapi.util.SharedPreferencesHelper
 import kotlinx.coroutines.launch
 
 
@@ -20,11 +23,16 @@ class DetailViewModel(application: Application): BaseViewModel(application) {
     private val _aALoadError = MutableLiveData<Boolean>()
     val aALoadError: LiveData<Boolean> get() = _aALoadError
 
+    private var _filterPriceRange = ""
+    val filterPriceRange: String get() =_filterPriceRange
+
+    val priceMin = SharedPreferencesHelper(getApplication()).getPriceMin().toString()
+    val priceMax = SharedPreferencesHelper(getApplication()).getPriceMax().toString()
 
     private fun fetchFromRemote() {
         viewModelScope.launch {
             try {
-                aARetrieved(boredService.getRandomAction())
+                aARetrieved(boredService.getFilteredAction(priceMin, priceMax))
             } catch (e: Throwable) {
                 _aALoadError.value = true
                 e.printStackTrace()
@@ -46,4 +54,6 @@ class DetailViewModel(application: Application): BaseViewModel(application) {
         _actionActivity.value = actionActivity
         _aALoadError.value = false
     }
+
+
 }

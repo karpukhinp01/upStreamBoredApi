@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModel
 import com.example.upstreamboredapi.model.AADatabase
 import com.example.upstreamboredapi.model.ActionActivity
 import com.example.upstreamboredapi.model.BoredApiService
+import com.example.upstreamboredapi.util.SharedPreferencesHelper
 import kotlinx.coroutines.launch
 
 class StartViewModel(application: Application): BaseViewModel(application) {
@@ -26,14 +27,18 @@ class StartViewModel(application: Application): BaseViewModel(application) {
     private val _loading = MutableLiveData<Boolean>()
     val loading: LiveData<Boolean> get() = _loading
 
+    val priceMin = SharedPreferencesHelper(getApplication()).getPriceMin().toString()
+    val priceMax = SharedPreferencesHelper(getApplication()).getPriceMax().toString()
+
+    fun setFilters(priceMin: Float, priceMax: Float) {
+        SharedPreferencesHelper(getApplication()).savePriceMin(priceMin)
+        SharedPreferencesHelper(getApplication()).savePriceMax(priceMax)
+    }
+
     fun deleteAll() {
         launch {
             AADatabase(getApplication()).aADao().deleteAll()
         }
-    }
-
-    fun setFilters(priceMin: Float, priceMax: Float) {
-        _filterPriceRange = "?minprice=$priceMin&maxprice=$priceMax"
     }
 
 

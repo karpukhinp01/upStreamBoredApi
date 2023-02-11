@@ -42,11 +42,14 @@ android {
 def retrofitVersion = '2.9.0'
 def roomVersion = '2.5.0'
 def lifecycle = "2.5.1"
+def preferencesVersion = '1.2.0'
 
 
 
 
 dependencies {
+
+    implementation "androidx.preference:preference-ktx:$preferencesVersion"
 
 
     // Swipe cards

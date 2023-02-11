@@ -1,6 +1,8 @@
 package com.example.upstreamboredapi.view
 
+import android.app.Application
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +11,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.upstreamboredapi.R
 import com.example.upstreamboredapi.databinding.FragmentStartBinding
+import com.example.upstreamboredapi.util.SharedPreferencesHelper
+import com.example.upstreamboredapi.viewmodel.DetailViewModel
 import com.example.upstreamboredapi.viewmodel.StartViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.slider.RangeSlider
@@ -53,8 +57,9 @@ class StartFragment : Fragment() {
                 show()
             }
 
-            val priceRange = view.findViewById<RangeSlider>(R.id.price_range)
-            priceRange.setValues(0.0F, 1.0F)
+            val priceRange = mView.findViewById<RangeSlider>(R.id.price_range)
+            priceRange.stepSize = 0.1F
+            priceRange.setValues(mViewModel.priceMin.toFloat(), mViewModel.priceMax.toFloat())
             priceRange.addOnChangeListener { slider, value, fromUser ->
                 val values = priceRange.values
                 mViewModel.setFilters(values[0], values[1])
