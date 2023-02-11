@@ -1,6 +1,5 @@
 package com.example.upstreamboredapi.model
 
-import androidx.lifecycle.LiveData
 import androidx.room.*
 
 
@@ -12,6 +11,9 @@ interface AADao {
 
     @Delete
     suspend fun delete(actionActivity: ActionActivity)
+
+    @Query("DELETE FROM ActionActivity")
+    suspend fun deleteAll()
 
     @Query("SELECT * FROM ActionActivity")
     suspend fun selectAll(): List<ActionActivity>

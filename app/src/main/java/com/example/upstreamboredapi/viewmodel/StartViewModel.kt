@@ -1,12 +1,16 @@
 package com.example.upstreamboredapi.viewmodel
 
+import android.app.Application
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.upstreamboredapi.model.AADatabase
 import com.example.upstreamboredapi.model.ActionActivity
 import com.example.upstreamboredapi.model.BoredApiService
+import kotlinx.coroutines.launch
 
-class StartViewModel: ViewModel() {
+class StartViewModel(application: Application): BaseViewModel(application) {
 
     private val boredService = BoredApiService()
 
@@ -18,6 +22,12 @@ class StartViewModel: ViewModel() {
 
     private val _loading = MutableLiveData<Boolean>()
     val loading: LiveData<Boolean> get() = _loading
+
+    fun deleteAll() {
+        launch {
+            AADatabase(getApplication()).aADao().deleteAll()
+        }
+    }
 
 
 }

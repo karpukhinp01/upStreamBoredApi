@@ -7,7 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import androidx.appcompat.view.menu.MenuBuilder
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.example.upstreamboredapi.R
 import com.example.upstreamboredapi.databinding.FragmentDetailBinding
 import com.example.upstreamboredapi.model.ActionActivity
@@ -23,6 +25,7 @@ class DetailFragment : Fragment() {
     private lateinit var mViewModel: DetailViewModel
     private var cardsAdapter: ArrayAdapter<ActionActivity>? = null
     private var actionActivities = ArrayList<ActionActivity>()
+    private var currentDisplayedAA: ActionActivity? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -48,13 +51,16 @@ class DetailFragment : Fragment() {
 
         binding.frame.setFlingListener(object: SwipeFlingAdapterView.onFlingListener {
             override fun removeFirstObjectInAdapter() {
+                currentDisplayedAA = actionActivities[0]
                 actionActivities.removeAt(0)
                 (cardsAdapter as CardsAdapter).notifyDataSetChanged()
             }
 
             override fun onLeftCardExit(p0: Any?) {
                 mViewModel.refresh()
-                mViewModel.storeAALocally(actionActivities[0])
+                currentDisplayedAA?.let {
+                    mViewModel.storeAALocally(it)
+                }
             }
 
             override fun onRightCardExit(p0: Any?) {
@@ -73,6 +79,17 @@ class DetailFragment : Fragment() {
                 mViewModel.refresh()
                 binding.errorLayout.isRefreshing = false
                 binding.errorLayout.visibility = View.GONE
+        }
+
+        binding.toolbar.inflateMenu(R.menu.menu_main)
+        binding.toolbar.setOnMenuItemClickListener {
+            when (it.itemId) {
+                R.id.action_favorites -> {
+                    findNavController().navigate(R.id.action_detailFragment_to_favoriteListFragment)
+                    true
+                }
+                else -> false
+            }
         }
     }
 
