@@ -44,7 +44,6 @@
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
     <string name="an_error_occurred_while_loading_actions">An error occurred while loading actions</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="some_activity">some activity</string>
     <string name="favorites">Favorites</string>
@@ -61,6 +60,9 @@
     <string name="busywork">Busywork</string>
     <string name="type">Type</string>
     <string name="apply">Apply</string>
-    <string name="cancel">cancel</string>
+    <string name="cancel">Cancel</string>
     <string name="reset">reset</string>
+    <string name="filters">filters</string>
+    <string name="find_out_what_you_are_about_to_do_today">find out what you are about to do today!</string>
+    <string name="go">go</string>
 </resources>

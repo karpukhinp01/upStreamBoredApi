@@ -1,8 +1,6 @@
 package com.example.upstreamboredapi.viewmodel
 
 import android.app.Application
-import android.util.Log
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.upstreamboredapi.model.ActionActivity
@@ -22,9 +20,6 @@ class DetailViewModel(application: Application): BaseViewModel(application) {
 
     private val _aALoadError = MutableLiveData<Boolean>()
     val aALoadError: LiveData<Boolean> get() = _aALoadError
-
-    private var _filterPriceRange = ""
-    val filterPriceRange: String get() =_filterPriceRange
 
     val priceMin = SharedPreferencesHelper(getApplication()).getPriceMin().toString()
     val priceMax = SharedPreferencesHelper(getApplication()).getPriceMax().toString()

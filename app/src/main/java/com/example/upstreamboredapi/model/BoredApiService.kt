@@ -1,6 +1,5 @@
 package com.example.upstreamboredapi.model
 
-import android.util.Log
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Retrofit
@@ -19,11 +18,8 @@ class BoredApiService {
         .baseUrl(BASE_URL)
         .build()
 
-    val api = retrofit.create(BoredApi::class.java)
+    private val api: BoredApi = retrofit.create(BoredApi::class.java)
 
-    suspend fun getRandomAction(): ActionActivity {
-        return api.getRandomAction()
-    }
     suspend fun getFilteredAction(priceMin: String, priceMax: String, type: String): ActionActivity {
         return api.getFilteredAction(priceMin, priceMax, type)
     }
