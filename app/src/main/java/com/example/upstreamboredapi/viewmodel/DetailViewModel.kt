@@ -30,14 +30,6 @@ class DetailViewModel(application: Application): BaseViewModel(application) {
     val priceMax = SharedPreferencesHelper(getApplication()).getPriceMax().toString()
     val type = SharedPreferencesHelper(getApplication()).getType()
 
-    fun resetFilters() {
-        SharedPreferencesHelper(getApplication()).apply {
-            savePriceMin(0.0F)
-            savePriceMax(1.0F)
-            saveType("")
-        }
-    }
-
     private fun fetchFromRemote() {
         viewModelScope.launch {
             try {
