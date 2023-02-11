@@ -63,6 +63,6 @@
     <string name="cancel">Cancel</string>
     <string name="reset">reset</string>
     <string name="filters">filters</string>
-    <string name="find_out_what_you_are_about_to_do_today">find out what you are about to do today!</string>
+    <string name="find_out_what_you_are_about_to_do_today">Find out what you are about to do today!</string>
     <string name="go">go</string>
 </resources>
