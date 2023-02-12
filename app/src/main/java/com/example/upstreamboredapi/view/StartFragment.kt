@@ -16,6 +16,7 @@ import com.example.upstreamboredapi.databinding.FragmentStartBinding
 import com.example.upstreamboredapi.viewmodel.StartViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.slider.RangeSlider
+import kotlinx.coroutines.NonDisposableHandle.parent
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -79,6 +80,7 @@ class StartFragment : Fragment() {
                 } else typeGroup.clearCheck()
             }
 
+//            TODO: try setting listeners and get rid of the apply button
             val applyButton = mView.findViewById<Button>(R.id.apply_button)
             applyButton.setOnClickListener {
                 val values = priceRange.values

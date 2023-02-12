@@ -103,7 +103,6 @@ class DetailFragment : Fragment() {
             if (actionActivities.isEmpty()) {
                 isError?.let {
                     if (isError) {
-                        binding.loadingIndicator.visibility = View.GONE
                         binding.frame.visibility = View.GONE
                         binding.errorLayout.visibility = View.VISIBLE
                     } else {

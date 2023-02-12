@@ -36,6 +36,9 @@
         <item name="android:textSize">18sp</item>
         <item name="android:textStyle">bold</item>
     </style>
+    <style name="title_filters">
+        <item name="android:textSize">18sp</item>
+    </style>
 
     <style name="heading">
         <item name="android:textSize">24sp</item>
