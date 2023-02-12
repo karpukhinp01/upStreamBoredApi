@@ -4,7 +4,7 @@
     tools:context="com.example.upstreamboredapi.view.MainActivity">
     <item
         android:id="@+id/action_favorites"
-        android:icon="@drawable/ic_baseline_favorite_24"
+        android:icon="@drawable/bookmark"
         app:showAsAction="ifRoom"
         android:title="@string/favorites" />
 </menu>

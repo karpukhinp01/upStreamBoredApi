@@ -21,7 +21,15 @@ open class CardsAdapter(context: Context, resourceId: Int, actionActivities: Lis
 
 
         vActionActivity.text = currentAA!!.activity
-        vPrice.text = currentAA.price.toString()
+        vPrice.text = when {
+            currentAA.price == 0.0 -> "Free"
+            (0.0 < currentAA.price!! && currentAA.price <= 0.2) -> "$"
+            (0.2 < currentAA.price && currentAA.price <= 0.4) -> "$$"
+            (0.4 < currentAA.price && currentAA.price <= 0.6) -> "$$$"
+            (0.6 < currentAA.price && currentAA.price <= 0.8) -> "$$$$"
+            (0.8 < currentAA.price && currentAA.price <= 1.0) -> "$$$$$"
+            else -> "N/a"
+        }
         vType.text = currentAA.type
         return finalView
     }
