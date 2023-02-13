@@ -29,6 +29,24 @@
         <item name="colorPrimaryInverse">@color/md_theme_light_inversePrimary</item>
     </style>
 
+    <style name="minPrice">
+        <item name="android:textColor">@color/md_theme_light_primary</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+    <style name="maxPrice">
+        <item name="android:textColor">@color/md_theme_light_error</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+    <style name="Type">
+        <item name="android:textColor">@color/md_theme_light_tertiary</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+
+
 
     <style name="fab_secondary">
         <item name="android:backgroundTint">@color/md_theme_light_secondaryContainer</item>

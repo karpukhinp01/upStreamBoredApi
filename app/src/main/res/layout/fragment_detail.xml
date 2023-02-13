@@ -17,66 +17,76 @@
 <!--#7d968c-->
 <!--#7295aa-->
 
-    <TextView
-        android:id="@+id/filter_start"
-        style="@style/title_filters"
+    <RelativeLayout
+        android:id="@+id/layout_filter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/toolbar"
-        android:text="Activities with "/>
+        android:padding="8dp"
+        >
 
-    <TextView
-        android:id="@+id/filter_price_min_str"
-        style="@style/title_filters"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/toolbar"
-        android:layout_toEndOf="@id/filter_start"
-        android:text="minimal price "/>
+        <TextView
+            android:id="@+id/filter_start"
+            style="@style/title_filters"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:text="@string/activities_with"/>
 
-    <TextView
-        android:id="@+id/filter_price_min_value"
-        style="@style/title_filters"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/toolbar"
-        android:layout_toEndOf="@id/filter_price_min_str"
-        android:text="null"/>
+        <TextView
+            android:id="@+id/filter_price_min_str"
+            style="@style/title_filters"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@id/filter_start"
+            android:text="@string/minimal_price"/>
 
-    <TextView
-        android:id="@+id/filter_price_max_str"
-        style="@style/title_filters"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/filter_price_min_str"
-        android:text="maximal price "/>
+        <TextView
+            android:id="@+id/filter_price_min_value"
+            style="@style/minPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@id/filter_price_min_str"
+            android:text="null"/>
 
-    <TextView
-        android:id="@+id/filter_price_max_value"
-        style="@style/title_filters"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/filter_price_min_str"
-        android:layout_toEndOf="@id/filter_price_max_str"
-        android:text="null, "/>
+        <TextView
+            android:id="@+id/filter_price_max_str"
+            style="@style/title_filters"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/filter_price_min_str"
+            android:text="@string/maximal_price"/>
 
-    <TextView
-        android:id="@+id/filter_activity_type_str"
-        style="@style/title_filters"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/filter_start"
-        android:layout_toEndOf="@id/filter_price_max_value"
-        android:text="activity type"/>
+        <TextView
+            android:id="@+id/filter_price_max_value"
+            style="@style/maxPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/filter_price_min_str"
+            android:layout_toEndOf="@id/filter_price_max_str"
+            android:text="null"/>
 
-    <TextView
-        android:id="@+id/filter_activity_type_value"
-        style="@style/title_filters"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/filter_start"
-        android:layout_toEndOf="@id/filter_activity_type_str"
-        android:text=" null"/>
+        <TextView
+            android:id="@+id/filter_activity_type_str"
+            style="@style/title_filters"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/filter_start"
+            android:layout_toEndOf="@id/filter_price_max_value"
+            android:text="@string/and_activity_type"/>
+
+        <TextView
+            android:id="@+id/filter_activity_type_value"
+            style="@style/Type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/filter_start"
+            android:layout_toEndOf="@id/filter_activity_type_str"
+            android:text="null"/>
+
+    </RelativeLayout>
 
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -84,7 +94,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="gone"
-        android:layout_below="@id/filter_activity_type_value">
+        android:layout_below="@id/layout_filter">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -111,7 +121,7 @@
             android:layout_height="match_parent"
             android:visibility="visible"
             android:layout_centerHorizontal="true"
-            android:layout_below="@id/filter_activity_type_value"
+            android:layout_below="@id/layout_filter"
             app:rotation_degrees="16"/>
 
 

@@ -48,32 +48,34 @@ class DetailFragment : Fragment() {
         cardsAdapter = CardsAdapter(requireContext(), R.layout.item, actionActivities)
         binding.frame.adapter = cardsAdapter
 
+        binding.apply {
+            filterPriceMinValue.text = mViewModel.convertedToDollarRange(mViewModel.priceMin.toDouble())
+            filterPriceMaxValue.text = mViewModel.convertedToDollarRange(mViewModel.priceMax.toDouble())
+            filterActivityTypeValue.text = if (mViewModel.type == "") "ALL" else mViewModel.type
+        }
+
         binding.frame.setFlingListener(object: SwipeFlingAdapterView.onFlingListener {
             override fun removeFirstObjectInAdapter() {
                 currentDisplayedAA = actionActivities[0]
                 actionActivities.removeAt(0)
                 (cardsAdapter as CardsAdapter).notifyDataSetChanged()
             }
-
             override fun onLeftCardExit(p0: Any?) {
                 mViewModel.refresh()
                 currentDisplayedAA?.let {
                     mViewModel.storeAALocally(it)
                 }
             }
-
             override fun onRightCardExit(p0: Any?) {
                 mViewModel.refresh()
             }
-
             override fun onAdapterAboutToEmpty(p0: Int) {
                 mViewModel.refresh()
             }
-
             override fun onScroll(p0: Float) {
             }
-
         })
+
         binding.errorLayout.setOnRefreshListener {
                 mViewModel.refresh()
                 binding.errorLayout.isRefreshing = false
