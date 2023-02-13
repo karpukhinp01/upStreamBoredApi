@@ -5,7 +5,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.TextView
@@ -16,7 +15,6 @@ import com.example.upstreamboredapi.databinding.FragmentStartBinding
 import com.example.upstreamboredapi.viewmodel.StartViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.slider.RangeSlider
-import kotlinx.coroutines.NonDisposableHandle.parent
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -49,9 +47,7 @@ class StartFragment : Fragment() {
             findNavController().navigate(R.id.action_startFragment_to_detailFragment)
             mViewModel.deleteAll()
         }
-
         setUpDialog()
-
     }
 
     private fun setUpDialog() {
@@ -60,7 +56,7 @@ class StartFragment : Fragment() {
 
         binding.filterButton.setOnClickListener {
             val mView = layoutInflater.inflate(R.layout.filter_dialog_view, null)
-            mViewModel.setFilterValues()
+            mViewModel.setFilterValuesToDialog()
             dialog.apply {
                 setCancelable(true)
                 setContentView(mView)
@@ -80,15 +76,16 @@ class StartFragment : Fragment() {
                 } else typeGroup.clearCheck()
             }
 
-//            TODO: try setting listeners and get rid of the apply button
-            val applyButton = mView.findViewById<Button>(R.id.apply_button)
-            applyButton.setOnClickListener {
+            priceRange.addOnChangeListener { _, _, _ ->
                 val values = priceRange.values
-                val selectedOption = typeGroup.checkedRadioButtonId
-                val selectedButton = mView.findViewById<RadioButton>(selectedOption)
+                mViewModel.setPrices(values[0], values[1])
+            }
+
+            typeGroup.setOnCheckedChangeListener { radioGroup, _ ->
+                val selectedButtonId = radioGroup.checkedRadioButtonId
+                val selectedButton = mView.findViewById<RadioButton>(selectedButtonId)
                 val type = if (selectedButton?.text.isNullOrEmpty()) "" else selectedButton.text.toString().lowercase()
-                mViewModel.setFilters(values[0], values[1], type, selectedOption)
-                dialog.dismiss()
+                mViewModel.setTypes(type, selectedButtonId)
             }
 
             val resetButton = mView.findViewById<TextView>(R.id.reset_button)
@@ -103,4 +100,5 @@ class StartFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
 }

@@ -48,16 +48,15 @@
         style="@style/title_filters"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/toolbar"
-        android:layout_toEndOf="@id/filter_price_min_value"
-        android:text=", maximal price "/>
+        android:layout_below="@id/filter_price_min_str"
+        android:text="maximal price "/>
 
     <TextView
         android:id="@+id/filter_price_max_value"
         style="@style/title_filters"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/toolbar"
+        android:layout_below="@id/filter_price_min_str"
         android:layout_toEndOf="@id/filter_price_max_str"
         android:text="null, "/>
 
@@ -67,6 +66,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/filter_start"
+        android:layout_toEndOf="@id/filter_price_max_value"
         android:text="activity type"/>
 
     <TextView

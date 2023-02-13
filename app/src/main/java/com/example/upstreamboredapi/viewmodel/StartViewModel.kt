@@ -19,17 +19,20 @@ class StartViewModel(application: Application): BaseViewModel(application) {
     private val _buttonId = MutableLiveData<Int>()
     val buttonId: LiveData<Int> get() = _buttonId
 
-
     val type = SharedPreferencesHelper(getApplication()).getType()
 
-    fun setFilters(priceMin: Float, priceMax: Float, type: String?, buttonId: Int) {
+    fun setPrices(priceMin: Float, priceMax: Float) {
         SharedPreferencesHelper(getApplication()).savePriceMin(priceMin)
         SharedPreferencesHelper(getApplication()).savePriceMax(priceMax)
+    }
+
+    fun setTypes(type: String?, buttonId: Int) {
         type?.let {
             SharedPreferencesHelper(getApplication()).saveType(it)
         }
         SharedPreferencesHelper(getApplication()).saveRadioButtonId(buttonId)
     }
+
     fun resetFilters() {
         SharedPreferencesHelper(getApplication()).apply {
             savePriceMin(0.0F)
@@ -39,7 +42,7 @@ class StartViewModel(application: Application): BaseViewModel(application) {
         }
     }
 
-    fun setFilterValues() {
+    fun setFilterValuesToDialog() {
         _prices.value = listOf(SharedPreferencesHelper(getApplication()).getPriceMin().toString(),
          SharedPreferencesHelper(getApplication()).getPriceMax().toString())
         _buttonId.value = SharedPreferencesHelper(getApplication()).getButtonId()

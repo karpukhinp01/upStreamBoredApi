@@ -21,8 +21,8 @@ class DetailViewModel(application: Application): BaseViewModel(application) {
     private val _aALoadError = MutableLiveData<Boolean>()
     val aALoadError: LiveData<Boolean> get() = _aALoadError
 
-    val priceMin = SharedPreferencesHelper(getApplication()).getPriceMin().toString()
-    val priceMax = SharedPreferencesHelper(getApplication()).getPriceMax().toString()
+    private val priceMin = SharedPreferencesHelper(getApplication()).getPriceMin().toString()
+    private val priceMax = SharedPreferencesHelper(getApplication()).getPriceMax().toString()
     val type = SharedPreferencesHelper(getApplication()).getType()
 
     private fun fetchFromRemote() {
