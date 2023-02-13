@@ -43,11 +43,17 @@ def retrofitVersion = '2.9.0'
 def roomVersion = '2.5.0'
 def lifecycle = "2.5.1"
 def preferencesVersion = '1.2.0'
-def daggerVersion = '2.45'
+def daggerVersion = '2.35.1'
 
 
 
 dependencies {
+
+    implementation "com.google.dagger:dagger:$daggerVersion"
+    implementation "com.google.dagger:dagger-android:$daggerVersion"
+    implementation "com.google.dagger:dagger-android-support:$daggerVersion"
+    kapt "com.google.dagger:dagger-compiler:$daggerVersion"
+    kapt "com.google.dagger:dagger-android-processor:$daggerVersion"
 
     //Preferences
     implementation "androidx.preference:preference-ktx:$preferencesVersion"

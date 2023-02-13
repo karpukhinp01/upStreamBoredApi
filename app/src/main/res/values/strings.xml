@@ -67,6 +67,6 @@
     <string name="go">go</string>
     <string name="minimal_price">minimal price:&#160;</string>
     <string name="maximal_price">maximal price:&#160;</string>
-    <string name="and_activity_type">, and activity type:&#160;</string>
+    <string name="and_activity_type">&#160;and activity type:&#160;</string>
     <string name="activities_with">Activities with&#160;</string>
 </resources>
