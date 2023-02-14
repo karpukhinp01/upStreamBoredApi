@@ -44,7 +44,13 @@
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">18sp</item>
     </style>
+    <style name="like_button">
+        <item name="tint">@color/md_theme_dark_tertiary</item>
+    </style>
 
+    <style name="dislike_button">
+        <item name="tint">@color/md_theme_dark_error</item>
+    </style>
     <style name="fab_secondary">
         <item name="android:backgroundTint">@color/md_theme_dark_secondaryContainer</item>
     </style>

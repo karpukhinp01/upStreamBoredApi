@@ -92,6 +92,12 @@ class DetailFragment : Fragment() {
                 else -> false
             }
         }
+        binding.buttonLike.setOnClickListener {
+            binding.frame.topCardListener.selectLeft()
+        }
+        binding.buttonDislike.setOnClickListener {
+            binding.frame.topCardListener.selectRight()
+        }
     }
 
     private fun observeViewModel() {
