@@ -7,11 +7,11 @@ import dagger.Provides
 import javax.inject.Singleton
 
 @Module
-class PreferencesModule {
+open class PreferencesModule {
 
     @Provides
     @Singleton
-    fun provideSharedPreferences(appl: Application): SharedPreferencesHelper {
+    open fun provideSharedPreferences(appl: Application): SharedPreferencesHelper {
         return SharedPreferencesHelper(appl)
     }
 }

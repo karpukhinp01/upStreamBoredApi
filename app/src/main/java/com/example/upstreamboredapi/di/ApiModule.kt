@@ -10,7 +10,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
 @Module
-class ApiModule {
+open class ApiModule {
 
     private val BASE_URL = "https://www.boredapi.com/api/"
 
@@ -28,7 +28,7 @@ class ApiModule {
     }
 
     @Provides
-    fun provideBoredApiService(): BoredApiService {
+    open fun provideBoredApiService(): BoredApiService {
         return BoredApiService()
     }
 }

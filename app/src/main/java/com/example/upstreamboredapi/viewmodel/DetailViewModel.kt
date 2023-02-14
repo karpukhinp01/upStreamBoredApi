@@ -16,6 +16,10 @@ import javax.inject.Inject
 
 class DetailViewModel(application: Application): BaseViewModel(application) {
 
+    constructor(application: Application, test: Boolean = true): this(application) {
+        injected = true
+    }
+
     @Inject
     lateinit var boredService: BoredApiService
 
@@ -25,19 +29,27 @@ class DetailViewModel(application: Application): BaseViewModel(application) {
     private val _aALoadError = MutableLiveData<Boolean>()
     val aALoadError: LiveData<Boolean> get() = _aALoadError
 
+    private var injected = false
+
     @Inject
     lateinit var prefs: SharedPreferencesHelper
 
     init {
-        DaggerViewModelComponent
-            .builder()
-            .diAppModule(DiAppModule(getApplication()))
-            .build()
-            .inject(this)
+        inject()
     }
 
-    val priceMin = prefs.getPriceMin()!!.toString()
-    val priceMax = prefs.getPriceMax()!!.toString()
+    fun inject() {
+        if (!injected) {
+            DaggerViewModelComponent
+                .builder()
+                .diAppModule(DiAppModule(getApplication()))
+                .build()
+                .inject(this)
+        }
+    }
+
+    val priceMin = prefs.getPriceMin()?.toString() ?: "0.0"
+    val priceMax = prefs.getPriceMax()?.toString() ?: "1.0"
     val type = prefs.getType()
     
     fun convertedToDollarRange(price: Double): String {
@@ -52,7 +64,7 @@ class DetailViewModel(application: Application): BaseViewModel(application) {
         }
     }
 
-    private fun fetchFromRemote() {
+    fun fetchFromRemote() {
         viewModelScope.launch {
             try {
                 aARetrieved(boredService.getFilteredAction(priceMin, priceMax, type!!))
