@@ -1,16 +1,11 @@
 package com.example.upstreamboredapi.viewmodel
 
 import android.app.Application
-import android.content.Context
-import androidx.room.Room
-import androidx.test.core.app.ApplicationProvider
-import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.example.upstreamboredapi.ApiModuleTest
 import com.example.upstreamboredapi.PreferencesModuleTest
 import com.example.upstreamboredapi.di.DaggerViewModelComponent
 import com.example.upstreamboredapi.di.DiAppModule
 import com.example.upstreamboredapi.model.AADao
-import com.example.upstreamboredapi.model.AADatabase
 import com.example.upstreamboredapi.model.ActionActivity
 import com.example.upstreamboredapi.model.BoredApiService
 import com.example.upstreamboredapi.util.SharedPreferencesHelper
@@ -22,12 +17,8 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.TestRule
 import org.junit.runners.model.Statement
-import org.mockito.ArgumentMatchers.anyString
 import org.mockito.Mock
-import org.mockito.Mockito
 import org.mockito.MockitoAnnotations
-import kotlinx.coroutines.test.runBlockingTest
-import org.junit.runner.RunWith
 import org.mockito.Mockito.*
 
 class DetailViewModelTest {
@@ -54,7 +45,7 @@ class DetailViewModelTest {
     @Mock
     lateinit var prefs: SharedPreferencesHelper
 
-    val application = Mockito.mock(Application::class.java)
+    val application = mock(Application::class.java)
 
     var detailViewModel = DetailViewModel(application, true)
 

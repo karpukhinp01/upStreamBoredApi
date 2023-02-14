@@ -13,6 +13,10 @@ import javax.inject.Inject
 
 class StartViewModel(application: Application): BaseViewModel(application) {
 
+    constructor(application: Application, test: Boolean = true): this(application) {
+        injected = true
+    }
+
     private val _actionActivity = MutableLiveData<ActionActivity>()
     val actionActivity: LiveData<ActionActivity> get() = _actionActivity
 
@@ -22,15 +26,23 @@ class StartViewModel(application: Application): BaseViewModel(application) {
     private val _buttonId = MutableLiveData<Int>()
     val buttonId: LiveData<Int> get() = _buttonId
 
+    private var injected = false
+
     @Inject
     lateinit var prefs: SharedPreferencesHelper
 
     init {
-        DaggerStartViewModelComponent
-            .builder()
-            .diAppModule(DiAppModule(getApplication()))
-            .build()
-            .inject(this)
+        inject()
+    }
+
+    fun inject() {
+        if (!injected) {
+            DaggerStartViewModelComponent
+                .builder()
+                .diAppModule(DiAppModule(getApplication()))
+                .build()
+                .inject(this)
+        }
     }
 
     val type = prefs.getType()
@@ -68,6 +80,4 @@ class StartViewModel(application: Application): BaseViewModel(application) {
             AADatabase(getApplication()).aADao().deleteAll()
         }
     }
-
-
 }

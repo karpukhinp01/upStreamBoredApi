@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/title"
-            android:text="some action"
+            android:text="@string/some_action"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:padding="8dp"/>
@@ -25,7 +25,7 @@
             android:id="@+id/price_str"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Price:"
+            android:text="@string/price"
             app:layout_constraintTop_toBottomOf="@id/action_activity"
             app:layout_constraintStart_toStartOf="parent"
             android:paddingHorizontal="8dp"/>
@@ -35,7 +35,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
-            android:text="N/a"
+            android:text="@string/n_a"
             app:layout_constraintBottom_toBottomOf="@id/price_str"
             android:paddingHorizontal="8dp"/>
 
@@ -43,7 +43,7 @@
             android:id="@+id/type_str"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Type:"
+            android:text="@string/type_Cap"
             app:layout_constraintTop_toBottomOf="@id/price_str"
             app:layout_constraintStart_toStartOf="parent"
             android:paddingHorizontal="8dp"/>
@@ -53,11 +53,45 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
-            android:text="N/a"
+            android:text="@string/n_a"
             app:layout_constraintBottom_toBottomOf="@id/type_str"
             android:paddingHorizontal="8dp"/>
 
+        <TextView
+            android:id="@+id/accesibility_str"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/accesibility_level"
+            app:layout_constraintTop_toBottomOf="@id/type_str"
+            app:layout_constraintStart_toStartOf="parent"
+            android:paddingHorizontal="8dp"/>
 
+        <TextView
+            android:id="@+id/accesibility_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="@string/n_a"
+            app:layout_constraintBottom_toBottomOf="@id/accesibility_str"
+            android:paddingHorizontal="8dp"/>
+
+        <TextView
+            android:id="@+id/participants_str"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/participants"
+            app:layout_constraintTop_toBottomOf="@id/accesibility_str"
+            app:layout_constraintStart_toStartOf="parent"
+            android:paddingHorizontal="8dp"/>
+
+        <TextView
+            android:id="@+id/participants_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="👱🏽"
+            app:layout_constraintBottom_toBottomOf="@id/participants_str"
+            android:paddingHorizontal="8dp"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         app:title="Activities"
+        android:elevation="4dp"
         android:layout_alignParentTop="true"/>
 
 <!--#000503-->
@@ -73,8 +74,7 @@
             style="@style/title_filters"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/filter_start"
-            android:layout_toEndOf="@id/filter_price_max_value"
+            android:layout_below="@id/filter_price_max_str"
             android:text="@string/and_activity_type"/>
 
         <TextView
@@ -82,7 +82,7 @@
             style="@style/Type"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/filter_start"
+            android:layout_below="@id/filter_price_max_str"
             android:layout_toEndOf="@id/filter_activity_type_str"
             android:text="null"/>
 

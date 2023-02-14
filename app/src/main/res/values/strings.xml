@@ -67,6 +67,18 @@
     <string name="go">go</string>
     <string name="minimal_price">minimal price:&#160;</string>
     <string name="maximal_price">maximal price:&#160;</string>
-    <string name="and_activity_type">&#160;and activity type:&#160;</string>
+    <string name="and_activity_type">and activity type:&#160;</string>
     <string name="activities_with">Activities with&#160;</string>
+    <string name="price">Price:</string>
+    <string name="some_action">some action</string>
+    <string name="n_a">N/a</string>
+    <string name="type_Cap">Type:</string>
+    <string name="accesibility_level">Accessibility level</string>
+    <string name="participants">Participants</string>
+    <string name="basic">Basic</string>
+    <string name="very_easy">Very easy</string>
+    <string name="easy">Easy</string>
+    <string name="very_hard">Very hard</string>
+    <string name="medium">Medium</string>
+    <string name="hard">Hard</string>
 </resources>
