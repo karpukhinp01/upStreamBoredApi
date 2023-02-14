@@ -54,12 +54,12 @@ class DetailViewModel(application: Application): BaseViewModel(application) {
     
     fun convertedToDollarRange(price: Double): String {
         return when {
-            price == 0.0 -> "Free,"
-            (0.0 < price && price <= 0.2) -> "$,"
-            (0.2 < price && price <= 0.4) -> "$$,"
-            (0.4 < price && price <= 0.6) -> "$$$,"
-            (0.6 < price && price <= 0.8) -> "$$$$,"
-            (0.8 < price && price <= 1.0) -> "$$$$$,"
+            price == 0.0 -> "Free"
+            (0.0 < price && price <= 0.2) -> "$"
+            (0.2 < price && price <= 0.4) -> "$$"
+            (0.4 < price && price <= 0.6) -> "$$$"
+            (0.6 < price && price <= 0.8) -> "$$$$"
+            (0.8 < price && price <= 1.0) -> "$$$$$"
             else -> "N/a,"
         }
     }

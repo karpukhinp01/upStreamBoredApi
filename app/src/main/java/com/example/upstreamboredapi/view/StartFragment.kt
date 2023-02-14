@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.TextView
@@ -84,8 +85,14 @@ class StartFragment : Fragment() {
             typeGroup.setOnCheckedChangeListener { radioGroup, _ ->
                 val selectedButtonId = radioGroup.checkedRadioButtonId
                 val selectedButton = mView.findViewById<RadioButton>(selectedButtonId)
-                val type = if (selectedButton?.text.isNullOrEmpty()) "" else selectedButton.text.toString().lowercase()
+                val type = if (selectedButton?.text.isNullOrEmpty() || selectedButton?.text == "All types") "" else selectedButton.text.toString().lowercase()
                 mViewModel.setTypes(type, selectedButtonId)
+            }
+
+            val applyButton = mView.findViewById<Button>(R.id.apply_button)
+            applyButton.setOnClickListener {
+                findNavController().navigate(R.id.action_startFragment_to_detailFragment)
+                dialog.dismiss()
             }
 
             val resetButton = mView.findViewById<TextView>(R.id.reset_button)

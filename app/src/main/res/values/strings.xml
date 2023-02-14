@@ -65,9 +65,9 @@
     <string name="filters">filters</string>
     <string name="find_out_what_you_are_about_to_do_today">Find out what you are about to do today!</string>
     <string name="go">go</string>
-    <string name="minimal_price">minimal price:&#160;</string>
-    <string name="maximal_price">maximal price:&#160;</string>
-    <string name="and_activity_type">and activity type:&#160;</string>
+    <string name="minimal_price">minimal price</string>
+    <string name="maximal_price">maximal price</string>
+    <string name="and_activity_type">activity type</string>
     <string name="activities_with">Activities with&#160;</string>
     <string name="price">Price:</string>
     <string name="some_action">some action</string>
@@ -81,4 +81,5 @@
     <string name="very_hard">Very hard</string>
     <string name="medium">Medium</string>
     <string name="hard">Hard</string>
+    <string name="all_types">All types</string>
 </resources>
