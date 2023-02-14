@@ -1,11 +1,16 @@
 package com.example.upstreamboredapi.viewmodel
 
 import android.app.Application
+import android.content.Context
+import androidx.room.Room
+import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.example.upstreamboredapi.ApiModuleTest
 import com.example.upstreamboredapi.PreferencesModuleTest
 import com.example.upstreamboredapi.di.DaggerViewModelComponent
 import com.example.upstreamboredapi.di.DiAppModule
+import com.example.upstreamboredapi.model.AADao
+import com.example.upstreamboredapi.model.AADatabase
 import com.example.upstreamboredapi.model.ActionActivity
 import com.example.upstreamboredapi.model.BoredApiService
 import com.example.upstreamboredapi.util.SharedPreferencesHelper
@@ -20,10 +25,10 @@ import org.junit.runners.model.Statement
 import org.mockito.ArgumentMatchers.anyString
 import org.mockito.Mock
 import org.mockito.Mockito
-import org.mockito.Mockito.`when`
 import org.mockito.MockitoAnnotations
 import kotlinx.coroutines.test.runBlockingTest
 import org.junit.runner.RunWith
+import org.mockito.Mockito.*
 
 class DetailViewModelTest {
 
@@ -73,5 +78,15 @@ class DetailViewModelTest {
         assertEquals("$$,", detailViewModel.convertedToDollarRange(0.3))
         assertEquals("$$$$$,", detailViewModel.convertedToDollarRange(0.9))
         assertEquals("N/a,", detailViewModel.convertedToDollarRange(1.1))
+    }
+
+    @Test
+    fun testStoreAALocally() {
+        val mockDao = mock(AADao::class.java)
+        val mockAA = ActionActivity(activity = "Mock activity", null, null, null, null, "0", null)
+        detailViewModel.launch {
+            detailViewModel.storeAALocally(mockAA)
+            verify(mockDao).insert(mockAA)
+        }
     }
 }
