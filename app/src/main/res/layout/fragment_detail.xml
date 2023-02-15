@@ -146,41 +146,41 @@
         android:visibility="visible"
         app:rotation_degrees="16" />
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/button_panel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_margin="8dp"
-        app:cardElevation="@dimen/cardview_default_elevation"
-        app:strokeWidth="0dp">
+<!--    <com.google.android.material.card.MaterialCardView-->
+<!--        android:id="@+id/button_panel"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:layout_margin="8dp"-->
+<!--        app:cardElevation="@dimen/cardview_default_elevation"-->
+<!--        app:strokeWidth="0dp">-->
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="70dp">
+<!--        <LinearLayout-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="70dp">-->
 
-            <ImageView
-                android:id="@+id/button_like"
-                style="@style/like_button"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:padding="16dp"
-                android:src="@drawable/like" />
+<!--            <ImageView-->
+<!--                android:id="@+id/button_like"-->
+<!--                style="@style/like_button"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_weight="1"-->
+<!--                android:padding="16dp"-->
+<!--                android:src="@drawable/like" />-->
 
-            <ImageView
-                android:id="@+id/button_dislike"
-                style="@style/dislike_button"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:padding="16dp"
-                android:src="@drawable/dislike" />
+<!--            <ImageView-->
+<!--                android:id="@+id/button_dislike"-->
+<!--                style="@style/dislike_button"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_weight="1"-->
+<!--                android:padding="16dp"-->
+<!--                android:src="@drawable/dislike" />-->
 
-        </LinearLayout>
+<!--        </LinearLayout>-->
 
 
-    </com.google.android.material.card.MaterialCardView>
+<!--    </com.google.android.material.card.MaterialCardView>-->
 
 
 </RelativeLayout>
