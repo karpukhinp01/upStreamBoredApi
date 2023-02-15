@@ -28,6 +28,18 @@ class CategoriesAdapter(private val CategoriesList: List<String>):
         val currentItem = CategoriesList[position]
         holder.catType.text = currentItem
 
+        when (currentItem) {
+            "busywork" -> holder.catImage.setImageResource(R.drawable.busywork)
+            "diy" -> holder.catImage.setImageResource(R.drawable.diy)
+            "education" -> holder.catImage.setImageResource(R.drawable.education)
+            "social" -> holder.catImage.setImageResource(R.drawable.social)
+            "recreational" -> holder.catImage.setImageResource(R.drawable.recreational)
+            "charity" -> holder.catImage.setImageResource(R.drawable.charity)
+            "cooking" -> holder.catImage.setImageResource(R.drawable.cooking)
+            "relaxation" -> holder.catImage.setImageResource(R.drawable.relaxation)
+            "music" -> holder.catImage.setImageResource(R.drawable.music)
+        }
+
         val action = CategoriesFragmentDirections.actionCategoriesFragmentToFavoriteListFragment(currentItem)
 
         holder.view.setOnClickListener {

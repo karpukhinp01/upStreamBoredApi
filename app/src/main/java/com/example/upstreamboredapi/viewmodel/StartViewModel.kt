@@ -5,10 +5,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.upstreamboredapi.di.DaggerStartViewModelComponent
 import com.example.upstreamboredapi.di.DiAppModule
-import com.example.upstreamboredapi.model.AADatabase
 import com.example.upstreamboredapi.model.ActionActivity
 import com.example.upstreamboredapi.util.SharedPreferencesHelper
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class StartViewModel(application: Application) : BaseViewModel(application) {

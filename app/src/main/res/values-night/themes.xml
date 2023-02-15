@@ -29,6 +29,10 @@
         <item name="colorPrimaryInverse">@color/md_theme_dark_inversePrimary</item>
     </style>
 
+    <style name="outline">
+        <item name="background">@color/md_theme_dark_outline</item>
+        <item name="marginHorizontal">4dp</item>
+    </style>
     <style name="minPrice">
         <item name="android:textColor">@color/md_theme_dark_primary</item>
         <item name="android:textStyle">bold</item>

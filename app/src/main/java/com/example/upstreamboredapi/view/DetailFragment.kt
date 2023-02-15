@@ -58,6 +58,10 @@ class DetailFragment : Fragment() {
         cardsAdapter = CardsAdapter(requireContext(), R.layout.item, actionActivities)
         binding.frame.adapter = cardsAdapter
 
+        mViewModel.setAccessibilityParams(binding.accessMin, mViewModel.accessMin.toDouble())
+        mViewModel.setAccessibilityParams(binding.accessMax, mViewModel.accessMax.toDouble())
+
+
         binding.apply {
             filterPriceMinValue.text =
                 mViewModel.convertedToDollarRange(mViewModel.priceMin.toDouble())
@@ -108,6 +112,7 @@ class DetailFragment : Fragment() {
                 else -> false
             }
         }
+
         binding.buttonLike.setOnClickListener {
             binding.frame.topCardListener.selectLeft()
         }

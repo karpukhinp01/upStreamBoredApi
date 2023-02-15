@@ -3,7 +3,6 @@ package com.example.upstreamboredapi.viewmodel
 import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.navigation.NavArgs
 import com.example.upstreamboredapi.model.AADatabase
 import com.example.upstreamboredapi.model.ActionActivity
 import kotlinx.coroutines.launch

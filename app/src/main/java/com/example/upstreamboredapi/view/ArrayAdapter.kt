@@ -1,10 +1,13 @@
 package com.example.upstreamboredapi.view
 
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.ImageView
 import android.widget.TextView
 import com.example.upstreamboredapi.R
 import com.example.upstreamboredapi.model.ActionActivity
@@ -22,8 +25,29 @@ open class CardsAdapter(context: Context, resourceId: Int, actionActivities: Lis
         val vType = finalView.findViewById<TextView>(R.id.type)
         val vAccessibility = finalView.findViewById<TextView>(R.id.accesibility_value)
         val vParticipants = finalView.findViewById<TextView>(R.id.participants_value)
+        val vImage = finalView.findViewById<ImageView>(R.id.activity_image)
+        val vLink = finalView.findViewById<TextView>(R.id.link)
+        val vSeparator = finalView.findViewById<TextView>(R.id.separator)
+        val vShare = finalView.findViewById<TextView>(R.id.share)
 
         vActionActivity.text = currentAA!!.activity
+        vType.text = currentAA.type
+
+        val intentView = Intent(Intent.ACTION_VIEW, Uri.parse(currentAA.link))
+
+        vLink.setOnClickListener {
+            context.startActivity(intentView)
+        }
+
+        if (currentAA.link.isNullOrEmpty()) {
+            vLink.visibility = View.GONE
+            vSeparator.visibility = View.GONE
+        }
+
+        vShare.setOnClickListener {
+            context.startActivity(sendEmail(currentAA))
+        }
+
         vPrice.text = when {
             currentAA.price == 0.0 -> "Free"
             (0.0 < currentAA.price!! && currentAA.price <= 0.2) -> "$"
@@ -33,7 +57,19 @@ open class CardsAdapter(context: Context, resourceId: Int, actionActivities: Lis
             (0.8 < currentAA.price && currentAA.price <= 1.0) -> "$$$$$"
             else -> "N/a"
         }
-        vType.text = currentAA.type
+
+        when (currentAA.type) {
+            "busywork" -> vImage.setImageResource(R.drawable.busywork)
+            "diy" -> vImage.setImageResource(R.drawable.diy)
+            "education" -> vImage.setImageResource(R.drawable.education)
+            "social" -> vImage.setImageResource(R.drawable.social)
+            "recreational" -> vImage.setImageResource(R.drawable.recreational)
+            "charity" -> vImage.setImageResource(R.drawable.charity)
+            "cooking" -> vImage.setImageResource(R.drawable.cooking)
+            "relaxation" -> vImage.setImageResource(R.drawable.relaxation)
+            "music" -> vImage.setImageResource(R.drawable.music)
+        }
+
 
 
         vAccessibility.apply {
@@ -73,6 +109,15 @@ open class CardsAdapter(context: Context, resourceId: Int, actionActivities: Lis
 
         vParticipants.text = getParticipantsString(currentAA.participants ?: 0)
         return finalView
+    }
+
+    fun sendEmail(item: ActionActivity): Intent {
+        val intent = Intent(Intent.ACTION_SEND)
+        intent.type = "message/rfc822"
+
+        intent.putExtra(Intent.EXTRA_SUBJECT, "Look at the activity I've found!")
+        intent.putExtra(Intent.EXTRA_TEXT, "${item.activity}\nType - ${item.type}\nPrice - ${item.price}")
+        return intent
     }
 
     private fun getParticipantsString(participants: Int): String {

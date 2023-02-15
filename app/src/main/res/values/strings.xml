@@ -75,14 +75,19 @@
     <string name="type_Cap">Type:</string>
     <string name="accesibility_level">Accessibility level</string>
     <string name="participants">Participants</string>
-    <string name="basic">Basic</string>
-    <string name="very_easy">Very easy</string>
-    <string name="easy">Easy</string>
-    <string name="very_hard">Very hard</string>
-    <string name="medium">Medium</string>
-    <string name="hard">Hard</string>
+    <string name="basic">basic</string>
+    <string name="very_easy">very easy</string>
+    <string name="easy">easy</string>
+    <string name="very_hard">very hard</string>
+    <string name="medium">medium</string>
+    <string name="hard">hard</string>
     <string name="all_types">All types</string>
     <string name="accessibility">Accessibility</string>
     <string name="sport">sport</string>
     <string name="no_saved_activities_in_the_category">No saved activities in the category</string>
+    <string name="smile">👱🏽</string>
+    <string name="accesibility">Accesibility:</string>
+    <string name="link">Link</string>
+    <string name="vert">|</string>
+    <string name="share">Share</string>
 </resources>

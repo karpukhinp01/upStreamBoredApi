@@ -5,11 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.upstreamboredapi.R
 import com.example.upstreamboredapi.databinding.FragmentCategoriesBinding
-import com.example.upstreamboredapi.databinding.FragmentFavoriteListBinding
 
 class CategoriesFragment : Fragment() {
     private val categories = listOf("education", "recreational", "social", "diy", "charity", "cooking", "relaxation", "music", "busywork")
@@ -22,7 +19,7 @@ class CategoriesFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         _binding = FragmentCategoriesBinding.inflate(inflater, container, false)
         // Inflate the layout for this fragment

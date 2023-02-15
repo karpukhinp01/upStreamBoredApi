@@ -55,9 +55,13 @@
     </style>
 
     <style name="like_button">
-        <item name="tint">@color/md_theme_light_tertiary</item>
+        <item name="backgroundTint">@color/md_theme_light_tertiary</item>
     </style>
 
+    <style name="outline">
+        <item name="background">@color/md_theme_light_outline</item>
+        <item name="marginHorizontal">4dp</item>
+    </style>
     <style name="dislike_button">
         <item name="tint">@color/md_theme_light_error</item>
     </style>

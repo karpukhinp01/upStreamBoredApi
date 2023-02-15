@@ -1,10 +1,12 @@
 package com.example.upstreamboredapi.viewmodel
 
 import android.app.Application
+import android.widget.TextView
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.upstreamboredapi.model.ActionActivity
 import androidx.lifecycle.viewModelScope
+import com.example.upstreamboredapi.R
 import com.example.upstreamboredapi.di.DaggerViewModelComponent
 import com.example.upstreamboredapi.di.DiAppModule
 import com.example.upstreamboredapi.model.AADatabase
@@ -98,6 +100,43 @@ class DetailViewModel(application: Application): BaseViewModel(application) {
     private fun aARetrieved(actionActivity: ActionActivity) {
         _actionActivity.value = actionActivity
         _aALoadError.value = false
+    }
+
+    fun setAccessibilityParams(textView: TextView, accessibility: Double) {
+        textView.apply {
+            when {
+                accessibility == 0.0 -> {
+                    setText(R.string.basic)
+                    setTextAppearance(R.style.color_easy)
+                }
+                (0.0 < accessibility!! && accessibility <= 0.2) -> {
+                    setText(R.string.very_easy)
+                    setTextAppearance(R.style.color_easy)
+                }
+                (0.2 < accessibility && accessibility <= 0.4) -> {
+                    setText(R.string.easy)
+                    setTextAppearance(R.style.color_easy)
+
+                }
+                (0.4 < accessibility && accessibility <= 0.6) -> {
+                    setText(R.string.medium)
+                    setTextAppearance(R.style.color_medium)
+
+                }
+                (0.6 < accessibility && accessibility <= 0.8) -> {
+                    setText(R.string.medium)
+                    setTextAppearance(R.style.color_hard)
+
+                }
+                (0.8 < accessibility && accessibility <= 1.0) -> {
+                    setText(R.string.very_hard)
+                    setTextAppearance(R.style.color_hard)
+                }
+                else -> {
+                    text = "N/a"
+                }
+            }
+        }
     }
 
 
