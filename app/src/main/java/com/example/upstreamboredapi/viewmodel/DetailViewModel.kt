@@ -53,6 +53,8 @@ class DetailViewModel(application: Application): BaseViewModel(application) {
 
     val priceMin = prefs.getPriceMin()?.toString() ?: "0.0"
     val priceMax = prefs.getPriceMax()?.toString() ?: "1.0"
+    val accessMin = prefs.getAccessMin()?.toString() ?: "0.0"
+    val accessMax = prefs.getPriceMax()?.toString() ?: "1.0"
     val type = prefs.getType()
     
     fun convertedToDollarRange(price: Double): String {
@@ -70,7 +72,7 @@ class DetailViewModel(application: Application): BaseViewModel(application) {
     private fun fetchFromRemote() {
         viewModelScope.launch {
             try {
-                aARetrieved(boredService.getFilteredAction(priceMin, priceMax, type!!))
+                aARetrieved(boredService.getFilteredAction(priceMin, priceMax, type!!, accessMin, accessMax))
             } catch (e: java.net.UnknownHostException) {
                 _aALoadErrorMessage.value = "Internet connection error, please try again later"
                 _aALoadError.value = true

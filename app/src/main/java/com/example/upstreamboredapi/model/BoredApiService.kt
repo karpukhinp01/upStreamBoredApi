@@ -14,7 +14,7 @@ class BoredApiService {
 
 //    private val api: BoredApi = retrofit.create(BoredApi::class.java)
 
-    suspend fun getFilteredAction(priceMin: String, priceMax: String, type: String): ActionActivity {
-        return api.getFilteredAction(priceMin, priceMax, type)
+    suspend fun getFilteredAction(priceMin: String, priceMax: String, type: String, accessMin: String, accessMax: String): ActionActivity {
+        return api.getFilteredAction(priceMin, priceMax, type, accessMin, accessMax)
     }
 }

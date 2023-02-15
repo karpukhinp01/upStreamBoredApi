@@ -23,6 +23,9 @@ class StartViewModel(application: Application) : BaseViewModel(application) {
     private val _prices = MutableLiveData<List<String>>()
     val prices: LiveData<List<String>> get() = _prices
 
+    private val _access = MutableLiveData<List<Float>>()
+    val access: LiveData<List<Float>> get() = _access
+
     private val _buttonId = MutableLiveData<Int>()
     val buttonId: LiveData<Int> get() = _buttonId
 
@@ -53,6 +56,11 @@ class StartViewModel(application: Application) : BaseViewModel(application) {
         prefs.savePriceMax(priceMax)
     }
 
+    fun setAccess(accessMin: Float, accessMax: Float) {
+        prefs.saveAccessMin(accessMin)
+        prefs.saveAccessMax(accessMax)
+    }
+
     fun setTypes(type: String?, buttonId: Int) {
         type?.let {
             prefs.saveType(it)
@@ -62,6 +70,8 @@ class StartViewModel(application: Application) : BaseViewModel(application) {
 
     fun resetFilters() {
         prefs.apply {
+            saveAccessMin(0.0F)
+            saveAccessMax(1.0F)
             savePriceMin(0.0F)
             savePriceMax(1.0F)
             saveType("")
@@ -70,6 +80,10 @@ class StartViewModel(application: Application) : BaseViewModel(application) {
     }
 
     fun setFilterValuesToDialog() {
+        _access.value = listOf(
+            prefs.getAccessMin()!!,
+            prefs.getAccessMax()!!
+        )
         _prices.value = listOf(
             prefs.getPriceMin().toString(),
             prefs.getPriceMax().toString()

@@ -69,6 +69,10 @@ class StartFragment : Fragment() {
             mViewModel.prices.observe(viewLifecycleOwner) {
                 priceRange.setValues(it[0].toFloat(), it[1].toFloat())
             }
+            priceRange.addOnChangeListener { _, _, _ ->
+                val values = priceRange.values
+                mViewModel.setPrices(values[0], values[1])
+            }
 
             val typeGroup = mView.findViewById<RadioGroup>(R.id.type_group)
             mViewModel.buttonId.observe(viewLifecycleOwner) {
@@ -77,10 +81,15 @@ class StartFragment : Fragment() {
                 } else typeGroup.clearCheck()
             }
 
-            priceRange.addOnChangeListener { _, _, _ ->
-                val values = priceRange.values
-                mViewModel.setPrices(values[0], values[1])
+            val accessRange = mView.findViewById<RangeSlider>(R.id.accesibility_range)
+            mViewModel.access.observe(viewLifecycleOwner) {
+                accessRange.setValues(it[0], it[1])
             }
+            accessRange.addOnChangeListener { _, _, _ ->
+                val values = accessRange.values
+                mViewModel.setAccess(values[0], values[1])
+            }
+
 
             typeGroup.setOnCheckedChangeListener { radioGroup, _ ->
                 val selectedButtonId = radioGroup.checkedRadioButtonId

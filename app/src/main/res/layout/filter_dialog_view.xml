@@ -4,9 +4,12 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <TextView
             android:id="@+id/title"
@@ -118,15 +121,31 @@
 
         </RadioGroup>
 
+        <TextView
+            android:id="@+id/accessibility_range_str"
+            style="@style/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:text="@string/accessibility"
+            app:layout_constraintTop_toBottomOf="@id/type_group"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <com.google.android.material.slider.RangeSlider
+            android:id="@+id/accesibility_range"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            app:layout_constraintTop_toBottomOf="@id/accessibility_range_str"/>
+
         <Button
             android:id="@+id/apply_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:text="@string/apply"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/type_group" />
+            app:layout_constraintTop_toBottomOf="@id/accesibility_range"
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <TextView
             android:id="@+id/reset_button"
@@ -139,5 +158,6 @@
             app:layout_constraintTop_toTopOf="@id/apply_button" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
 </androidx.cardview.widget.CardView>
