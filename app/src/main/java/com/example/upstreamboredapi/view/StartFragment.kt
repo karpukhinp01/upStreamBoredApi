@@ -1,6 +1,9 @@
 package com.example.upstreamboredapi.view
 
+import android.app.AlertDialog
+import android.app.Dialog
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -48,14 +51,15 @@ class StartFragment : Fragment() {
             findNavController().navigate(R.id.action_startFragment_to_detailFragment)
             mViewModel.deleteAll()
         }
-        setUpDialog()
+        binding.filterButton.setOnClickListener {
+            setUpDialog()
+        }
     }
 
     private fun setUpDialog() {
 
         val dialog = BottomSheetDialog(requireContext())
 
-        binding.filterButton.setOnClickListener {
             val mView = layoutInflater.inflate(R.layout.filter_dialog_view, null)
             mViewModel.setFilterValuesToDialog()
             dialog.apply {
@@ -74,13 +78,6 @@ class StartFragment : Fragment() {
                 mViewModel.setPrices(values[0], values[1])
             }
 
-            val typeGroup = mView.findViewById<RadioGroup>(R.id.type_group)
-            mViewModel.buttonId.observe(viewLifecycleOwner) {
-                if (!it.equals(2929)) {
-                    typeGroup.check(it)
-                } else typeGroup.clearCheck()
-            }
-
             val accessRange = mView.findViewById<RangeSlider>(R.id.accesibility_range)
             mViewModel.access.observe(viewLifecycleOwner) {
                 accessRange.setValues(it[0], it[1])
@@ -90,15 +87,16 @@ class StartFragment : Fragment() {
                 mViewModel.setAccess(values[0], values[1])
             }
 
+        val typeValue = mView.findViewById<TextView>(R.id.type_value)
+        typeValue.setOnClickListener {
+            setUpTypeDialog()
+        }
+        mViewModel.type.observe(viewLifecycleOwner) {
+            if (!it.equals("")) {
+                typeValue.text = it
+            } else typeValue.text = "All types"
+        }
 
-            typeGroup.setOnCheckedChangeListener { radioGroup, _ ->
-                val selectedButtonId = radioGroup.checkedRadioButtonId
-                val selectedButton = mView.findViewById<RadioButton>(selectedButtonId)
-                val type =
-                    if (selectedButton?.text.isNullOrEmpty() || selectedButton?.text == "All types") "" else selectedButton.text.toString()
-                        .lowercase()
-                mViewModel.setTypes(type, selectedButtonId)
-            }
 
             val applyButton = mView.findViewById<Button>(R.id.apply_button)
             applyButton.setOnClickListener {
@@ -111,6 +109,42 @@ class StartFragment : Fragment() {
                 mViewModel.resetFilters()
                 dialog.dismiss()
             }
+
+    }
+
+    private fun setUpTypeDialog() {
+        val builder = AlertDialog.Builder(requireContext())
+
+        val mView = layoutInflater.inflate(R.layout.type_dialog_view, null)
+        builder.apply {
+            setTitle("Choose activity type")
+            setView(mView)
+            setPositiveButton("Done!") { dialog, _ ->
+                dialog.dismiss()
+            }
+            setNegativeButton("Cancel") { dialog, _ ->
+                mViewModel.setTypes("All Activities", 2929)
+                dialog.dismiss()
+            }
+            show()
+        }
+
+        val typeGroup = mView.findViewById<RadioGroup>(R.id.type_group)
+        mViewModel.buttonId.observe(viewLifecycleOwner) {
+            if (!it.equals(2929)) {
+                typeGroup.check(it)
+            } else typeGroup.clearCheck()
+        }
+
+        typeGroup.setOnCheckedChangeListener { radioGroup, _ ->
+            val selectedButtonId = radioGroup.checkedRadioButtonId
+            val selectedButton = mView.findViewById<RadioButton>(selectedButtonId)
+            val type =
+                if (selectedButton?.text.isNullOrEmpty() || selectedButton?.text == "All types") "" else selectedButton.text.toString()
+                    .lowercase()
+            mViewModel.setTypes(type, selectedButtonId)
+            mViewModel.setFilterValuesToDialog()
+
         }
     }
 

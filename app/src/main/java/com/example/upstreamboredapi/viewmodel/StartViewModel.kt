@@ -29,6 +29,9 @@ class StartViewModel(application: Application) : BaseViewModel(application) {
     private val _buttonId = MutableLiveData<Int>()
     val buttonId: LiveData<Int> get() = _buttonId
 
+    private val _type = MutableLiveData<String>()
+    val type: LiveData<String> get() = _type
+
     private var injected = false
 
     @Inject
@@ -47,9 +50,6 @@ class StartViewModel(application: Application) : BaseViewModel(application) {
                 .inject(this)
         }
     }
-
-    val type = prefs.getType()
-
 
     fun setPrices(priceMin: Float, priceMax: Float) {
         prefs.savePriceMin(priceMin)
@@ -89,6 +89,7 @@ class StartViewModel(application: Application) : BaseViewModel(application) {
             prefs.getPriceMax().toString()
         )
         _buttonId.value = prefs.getButtonId()
+        _type.value = prefs.getType()
     }
 
     fun deleteAll() {

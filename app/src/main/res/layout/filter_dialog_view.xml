@@ -42,84 +42,26 @@
 
         <TextView
             android:id="@+id/type_str"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             style="@style/title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="8dp"
+            app:layout_constraintTop_toBottomOf="@id/price_range"
+            app:layout_constraintStart_toStartOf="parent"
             android:text="@string/type"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/price_range" />
+            android:padding="8dp"
+            />
 
-        <RadioGroup
-            android:id="@+id/type_group"
+
+        <TextView
+            android:id="@+id/type_value"
+            android:padding="12dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="8dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/type_str">
+            android:text="typeVal"
+            app:layout_constraintTop_toTopOf="@id/type_str"
+            app:layout_constraintBottom_toBottomOf="@id/type_str"
+            app:layout_constraintEnd_toEndOf="parent"/>
 
-            <RadioButton
-                android:id="@+id/all"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/all_types" />
-
-            <RadioButton
-                android:id="@+id/education"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/education" />
-
-            <RadioButton
-                android:id="@+id/recreational"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/recreational" />
-
-            <RadioButton
-                android:id="@+id/social"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/social" />
-
-            <RadioButton
-                android:id="@+id/diy"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/diy" />
-
-            <RadioButton
-                android:id="@+id/charity"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/charity" />
-
-            <RadioButton
-                android:id="@+id/cooking"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/cooking" />
-
-            <RadioButton
-                android:id="@+id/relaxation"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/relaxation" />
-
-            <RadioButton
-                android:id="@+id/music"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/music" />
-
-            <RadioButton
-                android:id="@+id/busywork"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/busywork" />
-
-
-        </RadioGroup>
 
         <TextView
             android:id="@+id/accessibility_range_str"
@@ -128,7 +70,7 @@
             android:layout_height="wrap_content"
             android:padding="8dp"
             android:text="@string/accessibility"
-            app:layout_constraintTop_toBottomOf="@id/type_group"
+            app:layout_constraintTop_toBottomOf="@id/type_str"
             app:layout_constraintStart_toStartOf="parent"/>
 
         <com.google.android.material.slider.RangeSlider
