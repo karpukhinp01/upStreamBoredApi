@@ -13,9 +13,6 @@ class FavoriteListViewModel(application: Application) : BaseViewModel(applicatio
     private val _aAList = MutableLiveData<List<ActionActivity>>()
     val aAList: LiveData<List<ActionActivity>> get() = _aAList
 
-
-
-
     fun fetchFromDB(type: String) {
         launch {
             _aAList.value = AADatabase(getApplication()).aADao().selectCat(type)

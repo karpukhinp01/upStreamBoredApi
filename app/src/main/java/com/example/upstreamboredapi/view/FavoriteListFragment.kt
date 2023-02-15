@@ -42,6 +42,7 @@ class FavoriteListFragment : Fragment() {
             layoutManager = LinearLayoutManager(context)
             adapter = aAListAdapter
         }
+
     }
 
     private fun observeViewModel() {

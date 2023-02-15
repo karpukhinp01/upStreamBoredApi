@@ -84,4 +84,5 @@
     <string name="all_types">All types</string>
     <string name="accessibility">Accessibility</string>
     <string name="sport">sport</string>
+    <string name="no_saved_activities_in_the_category">No saved activities in the category</string>
 </resources>
