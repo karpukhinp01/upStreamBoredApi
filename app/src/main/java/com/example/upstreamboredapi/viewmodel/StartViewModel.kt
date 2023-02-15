@@ -92,9 +92,4 @@ class StartViewModel(application: Application) : BaseViewModel(application) {
         _type.value = prefs.getType()
     }
 
-    fun deleteAll() {
-        launch {
-            AADatabase(getApplication()).aADao().deleteAll()
-        }
-    }
 }

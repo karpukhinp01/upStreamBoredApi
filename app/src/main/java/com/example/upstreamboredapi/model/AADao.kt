@@ -17,4 +17,7 @@ interface AADao {
 
     @Query("SELECT * FROM ActionActivity")
     suspend fun selectAll(): List<ActionActivity>
+
+    @Query("SELECT * FROM ActionActivity WHERE TYPE=:type")
+    suspend fun selectCat(type: String): List<ActionActivity>
 }

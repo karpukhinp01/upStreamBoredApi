@@ -45,11 +45,8 @@ class StartFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         mViewModel = ViewModelProvider(this)[StartViewModel::class.java]
 
-
-
         binding.goButton.setOnClickListener {
             findNavController().navigate(R.id.action_startFragment_to_detailFragment)
-            mViewModel.deleteAll()
         }
         binding.filterButton.setOnClickListener {
             setUpDialog()
