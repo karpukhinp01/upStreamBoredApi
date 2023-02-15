@@ -102,7 +102,7 @@ class DetailFragment : Fragment() {
         binding.toolbar.setOnMenuItemClickListener {
             when (it.itemId) {
                 R.id.action_favorites -> {
-                    findNavController().navigate(R.id.action_detailFragment_to_favoriteListFragment)
+                    findNavController().navigate(R.id.action_detailFragment_to_categoriesFragment)
                     true
                 }
                 else -> false
