@@ -9,15 +9,15 @@
 
     <TextView
         android:id="@+id/title"
+        style="@style/heading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
         android:text="@string/find_out_what_you_are_about_to_do_today"
         android:textAlignment="center"
-        style="@style/heading"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@id/buttons_layout"
-        android:layout_marginBottom="40dp"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:layout_width="wrap_content"
@@ -32,37 +32,34 @@
     <LinearLayout
         android:id="@+id/buttons_layout"
         android:layout_width="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_height="wrap_content">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-            android:layout_marginEnd="4dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginVertical="8dp"
             android:id="@+id/filter_button"
+            style="@style/fab_secondary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/filters"
-            style="@style/fab_secondary"
+            android:layout_marginVertical="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="4dp"
             android:elevation="10dp"
-            />
+            android:text="@string/filters" />
 
         <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/go_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="8dp"
             android:layout_marginStart="4dp"
             android:layout_marginEnd="8dp"
-            android:layout_marginVertical="8dp"
-            android:id="@+id/go_button"
-            app:borderWidth="2dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/go"/>
+            android:text="@string/go"
+            app:borderWidth="2dp" />
 
     </LinearLayout>
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

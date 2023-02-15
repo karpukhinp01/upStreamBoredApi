@@ -11,9 +11,9 @@ import com.example.upstreamboredapi.util.SharedPreferencesHelper
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class StartViewModel(application: Application): BaseViewModel(application) {
+class StartViewModel(application: Application) : BaseViewModel(application) {
 
-    constructor(application: Application, test: Boolean = true): this(application) {
+    constructor(application: Application, test: Boolean = true) : this(application) {
         injected = true
     }
 
@@ -70,8 +70,10 @@ class StartViewModel(application: Application): BaseViewModel(application) {
     }
 
     fun setFilterValuesToDialog() {
-        _prices.value = listOf(prefs.getPriceMin().toString(),
-         prefs.getPriceMax().toString())
+        _prices.value = listOf(
+            prefs.getPriceMin().toString(),
+            prefs.getPriceMax().toString()
+        )
         _buttonId.value = prefs.getButtonId()
     }
 

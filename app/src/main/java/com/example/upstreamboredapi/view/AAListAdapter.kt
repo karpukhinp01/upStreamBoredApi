@@ -8,7 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.upstreamboredapi.R
 import com.example.upstreamboredapi.model.ActionActivity
 
-class AAListAdapter(private val aAList: ArrayList<ActionActivity>): RecyclerView.Adapter<AAListAdapter.AAViewHolder>() {
+class AAListAdapter(private val aAList: ArrayList<ActionActivity>) :
+    RecyclerView.Adapter<AAListAdapter.AAViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AAViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -24,9 +25,9 @@ class AAListAdapter(private val aAList: ArrayList<ActionActivity>): RecyclerView
 
     override fun getItemCount() = aAList.size
 
-class AAViewHolder(var view: View): RecyclerView.ViewHolder(view) {
-    val actionActivityStr: TextView = view.findViewById(R.id.action_activity_str)
-}
+    class AAViewHolder(var view: View) : RecyclerView.ViewHolder(view) {
+        val actionActivityStr: TextView = view.findViewById(R.id.action_activity_str)
+    }
 
     fun updateAAList(newAAList: List<ActionActivity>) {
         aAList.clear()

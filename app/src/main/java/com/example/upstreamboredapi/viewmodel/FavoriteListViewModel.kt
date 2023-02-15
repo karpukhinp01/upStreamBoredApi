@@ -7,7 +7,7 @@ import com.example.upstreamboredapi.model.AADatabase
 import com.example.upstreamboredapi.model.ActionActivity
 import kotlinx.coroutines.launch
 
-class FavoriteListViewModel(application: Application): BaseViewModel(application) {
+class FavoriteListViewModel(application: Application) : BaseViewModel(application) {
 
     private val _aAList = MutableLiveData<List<ActionActivity>>()
     val aAList: LiveData<List<ActionActivity>> get() = _aAList

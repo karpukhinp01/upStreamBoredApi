@@ -66,12 +66,12 @@ class StartFragment : Fragment() {
 
             val priceRange = mView.findViewById<RangeSlider>(R.id.price_range)
             priceRange.stepSize = 0.1F
-            mViewModel.prices.observe(viewLifecycleOwner){
+            mViewModel.prices.observe(viewLifecycleOwner) {
                 priceRange.setValues(it[0].toFloat(), it[1].toFloat())
             }
 
             val typeGroup = mView.findViewById<RadioGroup>(R.id.type_group)
-            mViewModel.buttonId.observe(viewLifecycleOwner){
+            mViewModel.buttonId.observe(viewLifecycleOwner) {
                 if (!it.equals(2929)) {
                     typeGroup.check(it)
                 } else typeGroup.clearCheck()
@@ -85,7 +85,9 @@ class StartFragment : Fragment() {
             typeGroup.setOnCheckedChangeListener { radioGroup, _ ->
                 val selectedButtonId = radioGroup.checkedRadioButtonId
                 val selectedButton = mView.findViewById<RadioButton>(selectedButtonId)
-                val type = if (selectedButton?.text.isNullOrEmpty() || selectedButton?.text == "All types") "" else selectedButton.text.toString().lowercase()
+                val type =
+                    if (selectedButton?.text.isNullOrEmpty() || selectedButton?.text == "All types") "" else selectedButton.text.toString()
+                        .lowercase()
                 mViewModel.setTypes(type, selectedButtonId)
             }
 

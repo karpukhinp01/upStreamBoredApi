@@ -29,6 +29,9 @@ class DetailViewModel(application: Application): BaseViewModel(application) {
     private val _aALoadError = MutableLiveData<Boolean>()
     val aALoadError: LiveData<Boolean> get() = _aALoadError
 
+    private val _aALoadErrorMessage = MutableLiveData<String>()
+    val aALoadErrorMessage: LiveData<String> get() = _aALoadErrorMessage
+
     private var injected = false
 
     @Inject
@@ -64,11 +67,16 @@ class DetailViewModel(application: Application): BaseViewModel(application) {
         }
     }
 
-    fun fetchFromRemote() {
+    private fun fetchFromRemote() {
         viewModelScope.launch {
             try {
                 aARetrieved(boredService.getFilteredAction(priceMin, priceMax, type!!))
-            } catch (e: Throwable) {
+            } catch (e: java.net.UnknownHostException) {
+                _aALoadErrorMessage.value = "Internet connection error, please try again later"
+                _aALoadError.value = true
+                e.printStackTrace()
+            } catch (e: com.squareup.moshi.JsonDataException) {
+                _aALoadErrorMessage.value = "There are no available cards for the set of filters"
                 _aALoadError.value = true
                 e.printStackTrace()
             }

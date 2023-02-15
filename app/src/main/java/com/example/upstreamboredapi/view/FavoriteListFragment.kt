@@ -15,7 +15,7 @@ class FavoriteListFragment : Fragment() {
 
     private lateinit var mViewModel: FavoriteListViewModel
     private val aAListAdapter = AAListAdapter(arrayListOf())
-    private var _binding: FragmentFavoriteListBinding ? = null
+    private var _binding: FragmentFavoriteListBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(

@@ -9,11 +9,13 @@ import android.widget.TextView
 import com.example.upstreamboredapi.R
 import com.example.upstreamboredapi.model.ActionActivity
 
-open class CardsAdapter(context: Context, resourceId: Int, actionActivities: List<ActionActivity>): ArrayAdapter<ActionActivity>(context, resourceId, actionActivities) {
+open class CardsAdapter(context: Context, resourceId: Int, actionActivities: List<ActionActivity>) :
+    ArrayAdapter<ActionActivity>(context, resourceId, actionActivities) {
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val currentAA = getItem(position)
-        val finalView = convertView ?: LayoutInflater.from(context).inflate(R.layout.item, parent, false)
+        val finalView =
+            convertView ?: LayoutInflater.from(context).inflate(R.layout.item, parent, false)
 
         val vActionActivity = finalView.findViewById<TextView>(R.id.action_activity)
         val vPrice = finalView.findViewById<TextView>(R.id.price)
@@ -34,38 +36,39 @@ open class CardsAdapter(context: Context, resourceId: Int, actionActivities: Lis
         vType.text = currentAA.type
 
 
-        vAccessibility.apply { when {
-            currentAA.accessibility == 0.0 -> {
-                setText(R.string.basic)
-                setTextAppearance(R.style.color_easy)
-            }
-            (0.0 < currentAA.accessibility!! && currentAA.accessibility <= 0.2) -> {
-                setText(R.string.very_easy)
-                setTextAppearance(R.style.color_easy)
-            }
-            (0.2 < currentAA.accessibility && currentAA.accessibility <= 0.4) -> {
-                setText(R.string.easy)
-                setTextAppearance(R.style.color_easy)
+        vAccessibility.apply {
+            when {
+                currentAA.accessibility == 0.0 -> {
+                    setText(R.string.basic)
+                    setTextAppearance(R.style.color_easy)
+                }
+                (0.0 < currentAA.accessibility!! && currentAA.accessibility <= 0.2) -> {
+                    setText(R.string.very_easy)
+                    setTextAppearance(R.style.color_easy)
+                }
+                (0.2 < currentAA.accessibility && currentAA.accessibility <= 0.4) -> {
+                    setText(R.string.easy)
+                    setTextAppearance(R.style.color_easy)
 
-            }
-            (0.4 < currentAA.accessibility && currentAA.accessibility <= 0.6) -> {
-                setText(R.string.medium)
-                setTextAppearance(R.style.color_medium)
+                }
+                (0.4 < currentAA.accessibility && currentAA.accessibility <= 0.6) -> {
+                    setText(R.string.medium)
+                    setTextAppearance(R.style.color_medium)
 
-            }
-            (0.6 < currentAA.accessibility && currentAA.accessibility <= 0.8) -> {
-                setText(R.string.medium)
-                setTextAppearance(R.style.color_hard)
+                }
+                (0.6 < currentAA.accessibility && currentAA.accessibility <= 0.8) -> {
+                    setText(R.string.medium)
+                    setTextAppearance(R.style.color_hard)
 
+                }
+                (0.8 < currentAA.accessibility && currentAA.accessibility <= 1.0) -> {
+                    setText(R.string.very_hard)
+                    setTextAppearance(R.style.color_hard)
+                }
+                else -> {
+                    text = "N/a"
+                }
             }
-            (0.8 < currentAA.accessibility && currentAA.accessibility <= 1.0) -> {
-                setText(R.string.very_hard)
-                setTextAppearance(R.style.color_hard)
-            }
-            else -> {
-                text = "N/a"
-            }
-        }
         }
 
         vParticipants.text = getParticipantsString(currentAA.participants ?: 0)
