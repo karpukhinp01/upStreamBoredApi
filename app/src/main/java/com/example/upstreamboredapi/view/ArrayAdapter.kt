@@ -127,6 +127,7 @@ open class CardsAdapter(context: Context, resourceId: Int, actionActivities: Lis
             "cooking" -> vImage.setImageResource(R.drawable.cooking)
             "relaxation" -> vImage.setImageResource(R.drawable.relaxation)
             "music" -> vImage.setImageResource(R.drawable.music)
+            "instruction" -> vImage.setImageResource(R.drawable.all)
         }
     }
 }
