@@ -30,21 +30,27 @@ class DetailFragment : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        val instruction = ActionActivity(
+            "swipe right if You like, left, if you dont",
+            "instruction",
+            2,
+            1.0,
+            "",
+            "",
+            1.1
+        )
+        actionActivities.add(
+            instruction
+        )
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        actionActivities.add(
-            ActionActivity(
-                "swipe right if You like, left, if you dont",
-                "instruction",
-                2,
-                1.0,
-                "",
-                "",
-                1.1
-            )
-        )
+
         _binding = FragmentDetailBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -74,6 +80,9 @@ class DetailFragment : Fragment() {
             override fun removeFirstObjectInAdapter() {
                 currentDisplayedAA = actionActivities[0]
                 actionActivities.removeAt(0)
+                if (actionActivities.contains(currentDisplayedAA)) {
+                    actionActivities.remove(currentDisplayedAA)
+                }
                 (cardsAdapter as CardsAdapter).notifyDataSetChanged()
             }
 
