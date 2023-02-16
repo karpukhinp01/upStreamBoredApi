@@ -110,6 +110,10 @@ class AAListAdapter(private val aAList: ArrayList<ActionActivity>, private var c
     fun updateAAList(newAAList: List<ActionActivity>) {
         aAList.clear()
         aAList.addAll(newAAList)
+        datasetChanged()
+    }
+
+    fun datasetChanged() {
         notifyDataSetChanged()
     }
 

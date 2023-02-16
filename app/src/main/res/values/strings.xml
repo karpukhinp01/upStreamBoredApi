@@ -90,4 +90,5 @@
     <string name="link">Link</string>
     <string name="vert">|</string>
     <string name="share">Share</string>
+    <string name="clear_all">clear all</string>
 </resources>

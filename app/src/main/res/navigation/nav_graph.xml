@@ -32,7 +32,8 @@
         tools:layout="@layout/fragment_favorite_list" >
         <action
             android:id="@+id/action_favoriteListFragment_to_categoriesFragment"
-            app:destination="@id/categoriesFragment" />
+            app:destination="@id/categoriesFragment"
+            app:enterAnim="@anim/nav_default_pop_enter_anim" />
         <argument
             android:name="type"
             app:argType="string" />
