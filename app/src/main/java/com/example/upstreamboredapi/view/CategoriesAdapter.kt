@@ -1,5 +1,6 @@
 package com.example.upstreamboredapi.view
 
+import android.text.method.TextKeyListener.clear
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,10 +9,12 @@ import android.widget.TextView
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.upstreamboredapi.R
+import com.example.upstreamboredapi.model.ActionActivity
 
-class CategoriesAdapter(private val CategoriesList: List<String>):
+class CategoriesAdapter():
     RecyclerView.Adapter<CategoriesAdapter.CategoriesViewHolder>() {
 
+    private val categoriesList = mutableListOf<String>()
 
         class CategoriesViewHolder(var view: View): RecyclerView.ViewHolder(view) {
             val catImage = view.findViewById<ImageView>(R.id.type_image)
@@ -25,7 +28,7 @@ class CategoriesAdapter(private val CategoriesList: List<String>):
     }
 
     override fun onBindViewHolder(holder: CategoriesViewHolder, position: Int) {
-        val currentItem = CategoriesList[position]
+        val currentItem = categoriesList[position]
         holder.catType.text = currentItem
 
         when (currentItem) {
@@ -47,5 +50,11 @@ class CategoriesAdapter(private val CategoriesList: List<String>):
         }
     }
 
-    override fun getItemCount() = CategoriesList.size
+    override fun getItemCount() = categoriesList.size
+
+    fun updateAAList(newCatList: List<String>) {
+        categoriesList.clear()
+        categoriesList.addAll(newCatList)
+        notifyDataSetChanged()
+    }
 }

@@ -15,7 +15,7 @@ class FavoriteListViewModel(application: Application) : BaseViewModel(applicatio
     val aAList: LiveData<List<ActionActivity>> get() = _aAList
 
 
-    val dao = AADatabase(getApplication()).aADao()
+    private val dao = AADatabase(getApplication()).aADao()
 
     // Coroutine function to fetch data from the database
     fun fetchFromDB(type: String) {

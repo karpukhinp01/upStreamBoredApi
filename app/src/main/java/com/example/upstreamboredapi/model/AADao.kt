@@ -23,4 +23,7 @@ interface AADao {
 
     @Query("DELETE FROM ActionActivity WHERE TYPE=:type")
     suspend fun deleteCat(type: String)
+
+    @Query("SELECT DISTINCT type FROM ActionActivity")
+    suspend fun selectCat(): List<String>
 }

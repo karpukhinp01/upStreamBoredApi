@@ -33,7 +33,8 @@
         <action
             android:id="@+id/action_favoriteListFragment_to_categoriesFragment"
             app:destination="@id/categoriesFragment"
-            app:enterAnim="@anim/nav_default_pop_enter_anim" />
+            app:enterAnim="@anim/nav_default_pop_enter_anim"
+            app:popUpTo="@id/detailFragment" />
         <argument
             android:name="type"
             app:argType="string" />

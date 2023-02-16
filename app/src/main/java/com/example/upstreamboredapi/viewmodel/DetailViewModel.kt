@@ -94,8 +94,10 @@ class DetailViewModel(application: Application): BaseViewModel(application) {
     fun storeAALocally(actionActivity: ActionActivity) {
         // launch a coroutine to insert the actionActivity into the database
         launch {
-            val dao = AADatabase(getApplication()).aADao()
-            dao.insert(actionActivity)
+            if (!actionActivity.type.equals("instruction")) {
+                val dao = AADatabase(getApplication()).aADao()
+                dao.insert(actionActivity)
+            }
         }
     }
 
