@@ -11,7 +11,9 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:layout_alignParentTop="true"
-        app:title="Favourites" />
+        app:title="Favourites"
+        app:titleCentered="true"
+        app:navigationIcon="?attr/homeAsUpIndicator"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/activities_list"

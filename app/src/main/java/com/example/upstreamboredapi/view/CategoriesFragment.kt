@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.upstreamboredapi.databinding.FragmentCategoriesBinding
 import com.example.upstreamboredapi.viewmodel.CategoriesViewModel
@@ -31,11 +32,13 @@ class CategoriesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.toolbar.setNavigationOnClickListener {
+            findNavController().popBackStack()
+        }
+
         mViewModel = ViewModelProvider(this)[CategoriesViewModel::class.java]
         mViewModel.fetchCategoriesFromDb()
         observeViewModel()
-
-
 
         binding.categoriesRv.apply {
             layoutManager = LinearLayoutManager(context)

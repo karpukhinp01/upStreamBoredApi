@@ -11,7 +11,7 @@ class CategoriesViewModel(application: Application) : BaseViewModel(application)
     private val _mCategories = MutableLiveData<List<String>>()
     val mCategories: LiveData<List<String>> get() = _mCategories
 
-    val dao = AADatabase(getApplication()).aADao()
+    private val dao = AADatabase(getApplication()).aADao()
 
     fun fetchCategoriesFromDb() {
         launch {
