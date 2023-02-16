@@ -34,14 +34,6 @@ class DetailFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
-        _binding = FragmentDetailBinding.inflate(inflater, container, false)
-        return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        mViewModel = ViewModelProvider(this)[DetailViewModel::class.java]
         actionActivities.add(
             ActionActivity(
                 "swipe right if You like, left, if you dont",
@@ -53,6 +45,14 @@ class DetailFragment : Fragment() {
                 1.1
             )
         )
+        _binding = FragmentDetailBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        mViewModel = ViewModelProvider(this)[DetailViewModel::class.java]
+
         observeViewModel()
 
         cardsAdapter = CardsAdapter(requireContext(), R.layout.item, actionActivities)

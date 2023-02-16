@@ -69,6 +69,10 @@
     <style name="fab_secondary">
         <item name="android:backgroundTint">@color/md_theme_light_secondaryContainer</item>
     </style>
+    <style name="fab_primary">
+        <item name="android:backgroundTint">@color/md_theme_light_primaryContainer</item>
+    </style>
+
     <style name="title">
         <item name="android:textSize">18sp</item>
         <item name="android:textStyle">bold</item>

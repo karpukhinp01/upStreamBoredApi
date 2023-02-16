@@ -9,13 +9,15 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.upstreamboredapi.databinding.FragmentFavoriteListBinding
+import com.example.upstreamboredapi.model.ActionActivity
 import com.example.upstreamboredapi.viewmodel.FavoriteListViewModel
+import java.util.*
 
 
 class FavoriteListFragment : Fragment() {
 
     private lateinit var mViewModel: FavoriteListViewModel
-    private val aAListAdapter = AAListAdapter(arrayListOf())
+    private lateinit var  aAListAdapter : AAListAdapter
     private var _binding: FragmentFavoriteListBinding? = null
     private val binding get() = _binding!!
     private val args by navArgs<FavoriteListFragmentArgs>()
@@ -33,6 +35,14 @@ class FavoriteListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
+        binding.toolbar.title = args.type.replaceFirstChar {
+            if (it.isLowerCase()) it.titlecase(
+                Locale.getDefault()
+            ) else it.toString()
+        }
+        aAListAdapter =  AAListAdapter(arrayListOf(), requireContext())
 
         mViewModel = ViewModelProvider(this)[FavoriteListViewModel::class.java]
         mViewModel.fetchFromDB(args.type)

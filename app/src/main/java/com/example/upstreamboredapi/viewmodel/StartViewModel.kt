@@ -9,12 +9,15 @@ import com.example.upstreamboredapi.model.ActionActivity
 import com.example.upstreamboredapi.util.SharedPreferencesHelper
 import javax.inject.Inject
 
+// This is a Kotlin class for the StartViewModel. It extends the BaseViewModel class.
 class StartViewModel(application: Application) : BaseViewModel(application) {
 
+    // Secondary constructor to be used for testing purposes
     constructor(application: Application, test: Boolean = true) : this(application) {
         injected = true
     }
 
+    // Define several LiveData objects
     private val _actionActivity = MutableLiveData<ActionActivity>()
     val actionActivity: LiveData<ActionActivity> get() = _actionActivity
 
@@ -30,15 +33,19 @@ class StartViewModel(application: Application) : BaseViewModel(application) {
     private val _type = MutableLiveData<String>()
     val type: LiveData<String> get() = _type
 
+    // Private property to keep track of whether injection has occurred
     private var injected = false
 
+    // Inject SharedPreferencesHelper using Dagger
     @Inject
     lateinit var prefs: SharedPreferencesHelper
 
+    // Call the inject function to perform injection
     init {
         inject()
     }
 
+    // Check if injection has occurred and perform injection if it hasn't
     fun inject() {
         if (!injected) {
             DaggerStartViewModelComponent
@@ -49,6 +56,7 @@ class StartViewModel(application: Application) : BaseViewModel(application) {
         }
     }
 
+    // Functions for setting filter values
     fun setPrices(priceMin: Float, priceMax: Float) {
         prefs.savePriceMin(priceMin)
         prefs.savePriceMax(priceMax)
@@ -66,6 +74,7 @@ class StartViewModel(application: Application) : BaseViewModel(application) {
         prefs.saveRadioButtonId(buttonId)
     }
 
+    // Function to reset filter values to their default values
     fun resetFilters() {
         prefs.apply {
             saveAccessMin(0.0F)
@@ -77,6 +86,7 @@ class StartViewModel(application: Application) : BaseViewModel(application) {
         }
     }
 
+    // Function to set the filter values to be displayed in the filter dialog
     fun setFilterValuesToDialog() {
         _access.value = listOf(
             prefs.getAccessMin()!!,

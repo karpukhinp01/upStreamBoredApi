@@ -58,19 +58,7 @@ open class CardsAdapter(context: Context, resourceId: Int, actionActivities: Lis
             else -> "N/a"
         }
 
-        when (currentAA.type) {
-            "busywork" -> vImage.setImageResource(R.drawable.busywork)
-            "diy" -> vImage.setImageResource(R.drawable.diy)
-            "education" -> vImage.setImageResource(R.drawable.education)
-            "social" -> vImage.setImageResource(R.drawable.social)
-            "recreational" -> vImage.setImageResource(R.drawable.recreational)
-            "charity" -> vImage.setImageResource(R.drawable.charity)
-            "cooking" -> vImage.setImageResource(R.drawable.cooking)
-            "relaxation" -> vImage.setImageResource(R.drawable.relaxation)
-            "music" -> vImage.setImageResource(R.drawable.music)
-        }
-
-
+        setImage(vImage, currentAA)
 
         vAccessibility.apply {
             when {
@@ -111,7 +99,7 @@ open class CardsAdapter(context: Context, resourceId: Int, actionActivities: Lis
         return finalView
     }
 
-    fun sendEmail(item: ActionActivity): Intent {
+    private fun sendEmail(item: ActionActivity): Intent {
         val intent = Intent(Intent.ACTION_SEND)
         intent.type = "message/rfc822"
 
@@ -126,5 +114,19 @@ open class CardsAdapter(context: Context, resourceId: Int, actionActivities: Lis
             participantsValue += "\uD83D\uDC71\uD83C\uDFFD"
         }
         return participantsValue
+    }
+
+    private fun setImage(vImage: ImageView, currentAA: ActionActivity) {
+        when (currentAA.type) {
+            "busywork" -> vImage.setImageResource(R.drawable.busywork)
+            "diy" -> vImage.setImageResource(R.drawable.diy)
+            "education" -> vImage.setImageResource(R.drawable.education)
+            "social" -> vImage.setImageResource(R.drawable.social)
+            "recreational" -> vImage.setImageResource(R.drawable.recreational)
+            "charity" -> vImage.setImageResource(R.drawable.charity)
+            "cooking" -> vImage.setImageResource(R.drawable.cooking)
+            "relaxation" -> vImage.setImageResource(R.drawable.relaxation)
+            "music" -> vImage.setImageResource(R.drawable.music)
+        }
     }
 }
