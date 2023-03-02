@@ -57,7 +57,7 @@ class DetailViewModel(application: Application): BaseViewModel(application) {
     val priceMin = prefs.getPriceMin()?.toString() ?: "0.0"
     val priceMax = prefs.getPriceMax()?.toString() ?: "1.0"
     val accessMin = prefs.getAccessMin()?.toString() ?: "0.0"
-    val accessMax = prefs.getPriceMax()?.toString() ?: "1.0"
+    val accessMax = prefs.getAccessMax()?.toString() ?: "1.0"
     val type = prefs.getType()
 
 
